@@ -1,0 +1,121 @@
+{% extends 'timer/index.html' %}
+{% load static %}
+{% block seo %}
+        <title>{{ page_info.title }} | Projects</title>
+        <meta name="description" content="{{ page_info.seo_description }}">
+        <meta name="keywords" content="{{ page_info.seo_keywords }}">
+        <meta name="author" content="">
+{% endblock %}
+
+{% block my_static %}
+<script src="{% static 'waypoints/lib/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'waypoints/lib/shortcuts/infinite.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <!--
+        ==================================================
+        Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2>Works</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="{% url 'homepage' %}">
+                                        <i class="ion-ios-home"></i>
+                                        Αρχική Σελίδα
+                                    </a>
+                                </li>
+                                <li class="active">Projects</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section><!--/#Page header-->
+             <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="works" class="works">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Δειτε τα τελευταια Projects</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            <br>
+                        </p>
+                    </div>
+                    <div class="row infinite-container">
+                        {% for project in object_list %}
+                            <div class="col-sm-4 col-xs-12 infinite-item">
+                                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                                    <div class="img-wrapper">
+                                        <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
+                                        <div class="overlay">
+                                            <div class="buttons">
+                                                <a rel="gallery" class="fancybox" href="{{ project.image.url }}">Προβολή</a>
+                                                <a target="" href="{% url 'project_page' project.slug %}">Λεπτομέριες</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                    <h4>
+                                    <a href="{% url 'project_page' project.slug %}">
+                                        {{ project.title }}
+                                    </a>
+                                    </h4>
+                                    <p>
+                                        {{ project.short_description }}
+                                    </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <figcaption>
+                            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">Συνέχεια......</a>
+                            </figcaption>
+                        {% endif %}
+                    </div>
+                </div>
+            </section> <!-- #works -->
+
+             <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">Θες να ρωτησεις κατι;</h2>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Θες να ρωτήσεις τις προτάσεις μου; <br>Θες ένα πιο προσωπικό website;</p>
+                                <a href="{% url 'contact' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Επικοινωνήστε μαζί μου</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+{% endblock %}
+
+{% block additional_js %}
+<script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+  </script>
+{% endblock %}

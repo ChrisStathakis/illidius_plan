@@ -1,0 +1,162 @@
+{% extends 'english/index.html' %}
+
+{% load staticfiles %}
+{% block content %}
+
+        <!-- 
+        ================================================== 
+            Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2>{{ about_page_info.title_eng }}</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="{% url 'homepage_eng' %}">
+                                        <i class="ion-ios-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="active">About</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        ================================================== 
+            Company Description Section Start
+        ================================================== -->
+        <section class="company-description">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 wow fadeInLeft" data-wow-delay=".3s" >
+                        <img src="{% static 'images/my_images/personal.jpg' %}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="block">
+                            {{ about.text|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+        ================================================== 
+            Company Feature Section Start
+        ================================================== -->
+        <section class="about-feature clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for msg in about_messages %}
+                        <div class="block about-feature-1 wow fadeInDown" data-wow-duration="500ms" data-wow-delay="{{ msg.delay }}">
+                        <h2>
+                            {{ msg.title_eng }}
+                        </h2>
+                        <p>
+                            {{ msg.text_eng }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+        ================================================== 
+            Team Section Start
+        ================================================== -->
+        <section id="team">
+            <div class="container">
+                <div class="row">
+                    <h2 class="subtitle text-center">Technologies</h2>
+                    {% for techo in about_techo %}
+                        <div class="col-md-3">
+                            <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
+                                <div class="team-img">
+                                    <img src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title_eng }}">
+                                </div>
+                                <h3 class="team_name">{{ techo.title_eng }}</h3>
+                                <p class="team_designation">{{ techo.text_eng }}</p>
+                                <p class="team_text"></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!--
+        ==================================================
+        Clients Section Start
+        ================================================== -->
+        <section id="clients">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Our Happy Clinets</h2>
+                        <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
+                        <div id="clients-logo" class="owl-carousel">
+                            <div>
+                                <img src="../../static/images/clients/logo-1.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-2.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-3.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-4.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-5.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-1.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-2.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-3.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-4.jpg" alt="">
+                            </div>
+                            <div>
+                                <img src="../../static/images/clients/logo-5.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">You wanna hear my suggestions? <br>You want a different website that the othr use?</p>
+                                <a href="{% url 'contact' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--
+{% endblock %}

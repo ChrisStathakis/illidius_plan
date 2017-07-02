@@ -1,0 +1,109 @@
+{% extends 'timer/index.html' %}
+{% block seo %}
+    <title>{{ page_info.title }} | {{ object }}</title>
+    <meta name="description" content="{{ page_info.seo_description }}">
+    <meta name="keywords" content="{{ page_info.seo_keywords }}">
+{% endblock %}
+
+{% block content %}
+
+        <!--
+        ==================================================
+        Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2>Works</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="{% url 'homepage' %}">
+                                        <i class="ion-ios-home"></i>
+                                        Αρχική Σελίδα
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'gallery' %}">
+                                        <i class="ion-ios-home"></i>
+                                        Projects
+                                    </a>
+                                </li>
+                                <li class="active">Projects</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section><!--/#Page header-->
+            <section class="portfolio-single">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portfolio-single-img">
+                                <img class="img-responsive" alt="" src="{{ projects.image.url }}">
+                            </div>
+                            <div class="block">
+                                <h2>{{ projects.title }}</h2>
+                                <div class="portfolio-meta">
+                                   <span>{{ projects.day_added }}</span>|
+                                   <span> Category:  {{ projects.category }}</span>|
+                                   <span> website: <a target="_blank" href="http://{{ projects.href }}">{{ projects.href }}</a></span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                               {{ projects.description|safe }}
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="works works-fit">
+            <div class="container">
+                <h2 class="subtitle">Δες περισσότερα</h2>
+                    <p class="subtitle-des">
+                       Some screenshots about the project
+                    </p>
+                <div class="row">
+                    {% for image in images %}
+                    <div class="col-sm-3">
+                         <figure class="wow fadeInLeft animated portfolio-item animated" data-wow-duration="500ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
+                                <div class="img-wrapper">
+                                    <img src="{{ image.image.url }}" class="img-responsive" alt="this is a title">
+                                    <div class="overlay">
+                                        <div class="buttons">
+                                            <a rel="gallery" class="fancybox" href="../../static/images/portfolio/item-1.jpg">Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                             <figcaption>
+                                 <h4><a href="#">{{ image.title }}</a></h4>
+                                 <p>{{ image.text }}</p>
+                             </figcaption>
+                         </figure>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
+           <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">Θες να ρωτησεις κατι;</h2>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Θες να ρωτήσεις τις προτάσεις μου; <br>Θες ένα πιο προσωπικό website;</p>
+                                <a href="{% url 'contact' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Επικοινωνήστε μαζί μου</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+{% endblock %}
