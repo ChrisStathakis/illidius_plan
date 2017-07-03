@@ -9,6 +9,9 @@ from django.core.urlresolvers import reverse
 def post_upload(instance, filename):
     return 'post/%s/%s' % (instance.title, filename)
 
+def gallery_upload(instance, filename):
+    return 'gallery/%s/%s' % (instance.title, filename)
+
 class PostTags(models.Model):
     title = models.CharField(max_length=100, unique=True)
 
@@ -71,3 +74,10 @@ class Post(models.Model):
         else:
             self.likes.add(user)
         self.save()
+
+class Gallery(models.Model):
+    title = models.CharField(default='Gallery', max_length=30)
+    image = models.ImageField(upload_to=gallery_upload)
+
+    def __str__(self):
+        return self.title

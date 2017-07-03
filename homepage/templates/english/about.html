@@ -1,6 +1,11 @@
 {% extends 'english/index.html' %}
-
 {% load staticfiles %}
+{% block seo %}
+    <title>{{ page_info.title_eng }} | {{ about_page_info.title_eng }} </title>
+    <meta name="description" content="{{ page_info.seo_description_eng }}, {{ about.description_eng }}">
+    <meta name="keywords" content="{{ page_info.seo_keywords_eng }}, {{ about.keywords_eng }}">
+{% endblock %}
+
 {% block content %}
 
         <!-- 
@@ -104,36 +109,11 @@
                         <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Our Happy Clinets</h2>
                         <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
                         <div id="clients-logo" class="owl-carousel">
-                            <div>
-                                <img src="../../static/images/clients/logo-1.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-4.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-5.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-1.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-4.jpg" alt="">
-                            </div>
-                            <div>
-                                <img src="../../static/images/clients/logo-5.jpg" alt="">
-                            </div>
+                            {% for client in about_clients %}
+                                <div>
+                                    <img src="{{ client.image.url }}" alt="{{ client.title_eng }}">
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -151,7 +131,7 @@
                             <div class="block">
                                 <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>
                                 <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">You wanna hear my suggestions? <br>You want a different website that the othr use?</p>
-                                <a href="{% url 'contact' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                                <a href="{% url 'contact_eng' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
                             </div>
                         </div>
 

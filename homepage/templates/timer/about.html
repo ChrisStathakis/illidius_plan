@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block seo %}
-    <title>{{ page_info.title }} | {{ about.title }} </title>
+    <title>{{ page_info.title }} | {{ about_page_info.title }} </title>
     <meta name="description" content="{{ page_info.seo_description }}, {{ about.description }}">
     <meta name="keywords" content="{{ page_info.seo_keywords }}, {{ about.keywords }}">
 {% endblock %}

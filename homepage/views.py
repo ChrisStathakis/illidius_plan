@@ -86,8 +86,8 @@ class Works(ListView):
 
 class WorksEng(ListView):
     model = Projects
-    template_name = 'timer/gallery.html'
-    paginate_by = 10
+    template_name = 'english/gallery.html'
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         page_info = WelcomePage.objects.get(id=1)
@@ -174,7 +174,6 @@ class ContactPageEng(SuccessMessageMixin, CreateView):
     def get_success_message(self, cleaned_data):
         print(cleaned_data)
         return "Thank you!"
-
 
 class ProjectPage(DetailView):
     model = Projects

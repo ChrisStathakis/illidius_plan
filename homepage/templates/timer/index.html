@@ -64,13 +64,14 @@
     </head>
     <body>
     <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/el_GR/sdk.js#xfbml=1&version=v2.9&appId=399000140475673";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/el_GR/sdk.js#xfbml=1&version=v2.9&appId=399000140475673";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
         <!--
         ==================================================
         Header Section Start
@@ -101,10 +102,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{% url 'homepage' %}">Αρχικη Σελιδα</a></li>
                             <li><a href="{% url 'about' %}">Σχετικα</a></li>
-                            <li><a href="{% url 'service' %}">Υπηρεσιες</a></li>
                             <li><a href="{% url 'gallery' %}">Projects</a> </li>
                             <li><a href="{% url 'blog' %}">Blog</a></li>
                             <li><a href="{% url 'contact' %}">Επικοινωνια</a></li>
+                            <li><a href="{% url 'homepage_eng' %}">English Version</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -284,12 +285,12 @@
                         <!-- Social Media -->
                         <ul class="social">
                             <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                <a href="https://www.facebook.com/christos.stathakis.39" class="Facebook">
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                                <a href="https://twitter.com/Zefarak" class="Twitter">
                                     <i class="ion-social-twitter"></i>
                                 </a>
                             </li>
@@ -299,14 +300,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                                    <i class="ion-social-googleplus"></i>
+                                <a href="https://github.com/Zefarak" class="github">
+                                    <i class="ion-social-github"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </footer> <!-- /#footer -->
-                
         </body>
     </html>

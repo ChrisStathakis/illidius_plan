@@ -39,13 +39,14 @@ urlpatterns = [
     url(r'^project/(?P<slug>[-\w]+)/$', ProjectPage.as_view(), name='project_page'),
 
     #english
-    url(r'^eng/$', HomePageEng.as_view(), name='homepage_eng'),
-    url(r'^eng/about/', AboutEng.as_view(), name='about_eng'),
-    url(r'^eng/service/', ServiceEng.as_view(), name='service_eng'),
-    url(r'^eng/works/', WorksEng.as_view(), name='gallery_eng'),
-    url(r'^eng/blog/$', BlogPageEng.as_view(), name='blog_eng'),
-    url(r'^eng/contact/', ContactPageEng.as_view(), name='contact_eng'),
-    url(r'^eng/project/(?P<slug>[-\w]+)/$', ProjectPageEng.as_view(), name='project_page_eng'),
+    url(r'^en/$', HomePageEng.as_view(), name='homepage_eng'),
+    url(r'^en/about/', AboutEng.as_view(), name='about_eng'),
+    url(r'^en/service/', ServiceEng.as_view(), name='service_eng'),
+    url(r'^en/works/', WorksEng.as_view(), name='gallery_eng'),
+    url(r'^en/blog/$', BlogPageEng.as_view(), name='blog_eng'),
+    url(r'^en/blog/(?P<slug>[-\w]+)/$', view=PostPageEng.as_view(), name='blog_page_eng'),
+    url(r'^en/contact/', ContactPageEng.as_view(), name='contact_eng'),
+    url(r'^en/project/(?P<slug>[-\w]+)/$', ProjectPageEng.as_view(), name='project_page_eng'),
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', include('robots.urls')),
     #test_urls
