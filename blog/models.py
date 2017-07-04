@@ -77,7 +77,7 @@ class Post(models.Model):
 
 class Gallery(models.Model):
     title = models.CharField(default='Gallery', max_length=30)
-    image = models.ImageField(upload_to=gallery_upload)
+    file = models.ImageField(upload_to=gallery_upload)
 
     def __str__(self):
         return self.title

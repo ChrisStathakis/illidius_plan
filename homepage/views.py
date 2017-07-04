@@ -2,9 +2,11 @@ from django.shortcuts import render, render_to_response, get_object_or_404, redi
 from django.views.generic import View, FormView, CreateView, DetailView, ListView, RedirectView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
+from django.http import JsonResponse
 from .models import *
 from newsletter.forms import Join, JoinForm
-from blog.models import Post, PostCategory, PostTags
+from blog.models import Post, PostCategory, PostTags, Gallery
+from blog.forms import PhotoForm, GalleryForm
 from .forms import ContactForm
 from projects.models import Projects, ImageProject
 from django.views.decorators.cache import cache_page
@@ -215,9 +217,23 @@ class PostLikeEng(RedirectView):
         return obj.absolute_url()
 
 
-from blog.forms import PhotoForm
+
 def blog_create(request):
+    images = Gallery.objects.all()
     if request.POST:
+        form_photo = GalleryForm(request.POST, request.FILES)
+        if form_photo.is_valid():
+            photo = form_photo.save()
+            data = {'is_valid': True,
+                    'title': photo.file.title,
+                    'url':form_photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+    else:
+        form_photo = GalleryForm()
+
+    if  request.POST:
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
             print(request.POST)
@@ -225,8 +241,43 @@ def blog_create(request):
             return redirect('homepage')
     else:
         form = PhotoForm()
+
     context = locals()
     return render(request, 'test_templates/create_blog.html', context)
+
+
+class BasicUploadView(View):
+    def get(self, request):
+        photos_list = Gallery.objects.all()
+        return render(self.request, 'test_templates/index.html', {'photos': photos_list})
+
+    def post(self, request):
+        form = GalleryForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 '''

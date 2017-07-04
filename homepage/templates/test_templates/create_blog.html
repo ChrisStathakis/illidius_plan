@@ -3,10 +3,49 @@
 {% load widget_tweaks %}
 {% block my_static %}
     <link href="{% static 'css/cropper.min.css' %}" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
     <div style="margin-top: 5%" class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Επέλεξε Εικόνα</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body col-md-12">
+                    <div class="col-md-6">
+                        <table id="gallery" class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Photo</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for photo in images %}
+                              <tr>
+                                <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="margin-bottom: 20px;">
+                            <button type="button" class="btn btn-primary js-upload-photos">
+                              <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+                            </button>
+                            <input id="fileupload" type="file" name="file" multiple
+                                   style="display: none;"
+                                   data-url="{% url 'create_blog' %}"
+                                   data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="col-md-6">
             <h1 class="page-header">Preview</h1>
               <!--
@@ -172,9 +211,49 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
 {% endblock %}
 
 {% block additional_js %}
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('id_content');
+    </script>
+
+    {# JQUERY FILE UPLOAD SCRIPTS #}
+  <script src="{% static 'jquery_upload/js/vendor/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'jquery_upload/js/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'jquery_upload/js/jquery.fileupload.js' %}"></script>
+
+  {# PHOTOS PAGE SCRIPTS #}
+  <script>
+  $(function () {
+  /* 1. OPEN THE FILE EXPLORER WINDOW */
+  $(".js-upload-photos").click(function () {
+    $("#fileupload").click();
+  });
+
+  /* 2. INITIALIZE THE FILE UPLOAD COMPONENT */
+  $("#fileupload").fileupload({
+    dataType: 'json',
+    done: function (e, data) {  /* 3. PROCESS THE RESPONSE FROM THE SERVER */
+      if (data.result.is_valid) {
+        $("#gallery tbody").prepend(
+          "<tr><td><a href='" + data.result.url + "'>" + data.result.name + "</a></td></tr>"
+        )
+      }
+    }
+  });
+
+});
+  </script>
+
+    <script>
+        $("#id_username").change(function () {
+            console.log($(this).val());
+        });
+    </script>
     <script>
         function myTitle() {
             var x = document.getElementById('id_title').value;

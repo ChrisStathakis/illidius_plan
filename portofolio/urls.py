@@ -50,7 +50,9 @@ urlpatterns = [
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', include('robots.urls')),
     #test_urls
+
     url(r'^create_blog/', view=blog_create, name='create_blog'),
+    url(r'^basic-upload/$', BasicUploadView.as_view(), name='basic_upload'),
     url(r'^like/(?P<slug>[-\w]+)/$', PostLike.as_view(), name='like'),
     #url(r'^api/like/(?P<slug>[-\w]+)/$', PostLikeApi.as_view(), name='api_like'),
 

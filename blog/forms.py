@@ -53,3 +53,9 @@ class PhotoForm(forms.ModelForm):
         resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
         resized_image.save(photo.file.name)
         return photo
+
+
+class GalleryForm(forms.ModelForm):
+    class Meta:
+        model = Gallery
+        fields = ['file']
