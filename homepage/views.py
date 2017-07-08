@@ -10,6 +10,9 @@ from blog.forms import PhotoForm, GalleryForm
 from .forms import ContactForm
 from projects.models import Projects, ImageProject
 from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_control
+
+
 # Create your views here.
 
 WELCOME_PAGE_ID = 1
@@ -97,6 +100,7 @@ class WorksEng(ListView):
         context = locals()
         return context
 
+@cache_control(must_revalidate=True, max_age=3600)
 class BlogPage(ListView):
     model = Post
     template_name = 'timer/blog-left-sidebar.html'
@@ -120,6 +124,7 @@ class BlogPage(ListView):
         queryset = queryset.filter(category__id__in=cat_name) if cat_name else queryset
         return queryset
 
+@cache_control(must_revalidate=True, max_age=3600)
 class BlogPageEng(ListView):
     model = Post
     template_name = 'english/blog-left-sidebar.html'
