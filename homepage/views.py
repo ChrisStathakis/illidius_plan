@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404, redirect
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import View, FormView, CreateView, DetailView, ListView, RedirectView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
@@ -266,7 +266,11 @@ class BasicUploadView(View):
 
 
 
+from django.core.cache import cache
 
+def cache_clear(request):
+    cache.clear()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 

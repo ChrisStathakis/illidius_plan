@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^service/$', Service.as_view(), name='service'),
     url(r'^works/$', Works.as_view(), name='gallery'),
     url(r'^blog/$', cache_page(60*2)(BlogPage.as_view()), name='blog'),
-    url(r'^blog/(?P<slug>[-\w]+)/$', cache_page(60*2)(view=PostPage.as_view()), name='blog_page'),
+    url(r'^blog/(?P<slug>[-\w]+)/$', cache_page(60*2)(PostPage.as_view()), name='blog_page'),
     url(r'^contact/$', ContactPage.as_view(), name='contact'),
     url(r'^project/(?P<slug>[-\w]+)/$', ProjectPage.as_view(), name='project_page'),
     #english
@@ -43,8 +43,8 @@ urlpatterns = [
     url(r'^en/about/$', AboutEng.as_view(), name='about_eng'),
     url(r'^en/service/$', ServiceEng.as_view(), name='service_eng'),
     url(r'^en/works/$', WorksEng.as_view(), name='gallery_eng'),
-    url(r'^en/blog/$',  cache_page(60*2)(BlogPageEng.as_view()), name='blog_eng'),
-    url(r'^en/blog/(?P<slug>[-\w]+)/$', cache_page(60*2)(view=PostPageEng.as_view()), name='blog_page_eng'),
+    url(r'^en/blog/$', BlogPageEng.as_view(), name='blog_eng'),
+    url(r'^en/blog/(?P<slug>[-\w]+)/$', PostPageEng.as_view(), name='blog_page_eng'),
     url(r'^en/contact/$', ContactPageEng.as_view(), name='contact_eng'),
     url(r'^en/project/(?P<slug>[-\w]+)/$', ProjectPageEng.as_view(), name='project_page_eng'),
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^create_blog/$', view=blog_create, name='create_blog'),
     url(r'^basic-upload/$', BasicUploadView.as_view(), name='basic_upload'),
     url(r'^like/(?P<slug>[-\w]+)/$', PostLike.as_view(), name='like'),
+    url(r'^cache-clear/$', view=cache_clear, name='cache_clear'),
     url(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='index'),
     #url(r'^api/like/(?P<slug>[-\w]+)/$', PostLikeApi.as_view(), name='api_like'),
 
