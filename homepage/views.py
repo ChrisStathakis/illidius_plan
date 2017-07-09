@@ -9,7 +9,7 @@ from blog.models import Post, PostCategory, PostTags, Gallery
 from blog.forms import PhotoForm, GalleryForm
 from .forms import ContactForm
 from projects.models import Projects, ImageProject
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page, cache_control
 
 
 # Create your views here.

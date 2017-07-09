@@ -24,11 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['illidius-corner.herokuapp.com', '127.0.0.1:8000', 'simply-chris.com']
-
-
+ALLOWED_HOSTS = ['*']
+DEBUG404 = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -193,3 +192,4 @@ MEDIA_URL = 'https://s3.%s.amazonaws.com/%s/media/' % (AWS_REGION, AWS_STORAGE_B
 
 MEDIA = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+
