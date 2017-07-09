@@ -59,9 +59,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'django.middleware.cache.UpdateCacheMiddleware',
-    #'django.middleware.common.CommonMiddleware',
-    #'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 
 ]
 
@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'portofolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-'''
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
@@ -101,7 +100,6 @@ CACHES = {
     }
 }
 
-'''
 '''
 DATABASES = {
     'default': {
