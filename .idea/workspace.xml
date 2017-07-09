@@ -31,11 +31,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homepage/templates/timer/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769" vertical-offset="34" max-vertical-offset="5576">
+              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58938247" vertical-offset="1224" max-vertical-offset="3502">
-              <caret line="105" column="3" selection-start-line="105" selection-start-column="3" selection-end-line="105" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.46045503" vertical-offset="170" max-vertical-offset="3468">
+              <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -85,9 +95,10 @@
         <option value="$PROJECT_DIR$/homepage/models.py" />
         <option value="$PROJECT_DIR$/homepage/views.py" />
         <option value="$PROJECT_DIR$/portofolio/urls.py" />
-        <option value="$PROJECT_DIR$/homepage/templates/timer/index.html" />
         <option value="$PROJECT_DIR$/static/creative/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/homepage/static/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/portofolio/settings.py" />
+        <option value="$PROJECT_DIR$/homepage/templates/timer/index.html" />
       </list>
     </option>
   </component>
@@ -178,9 +189,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\homepage\static\css" />
+      <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\homepage\static" />
       <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\homepage\static\fonts" />
       <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\static\creative\css\fonts" />
-      <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\homepage\static" />
       <recent name="C:\Users\Christos\Dropbox\christos_portofolio\portofolio\homepage\static\jquery_upload" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -848,22 +859,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/homepage/static/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="910">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/homepage/templates/timer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42307693" vertical-offset="561" max-vertical-offset="5678">
-          <caret line="55" column="85" selection-start-line="55" selection-start-column="85" selection-end-line="55" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portofolio/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8894908" vertical-offset="216" max-vertical-offset="1139">
@@ -874,10 +869,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/homepage/static/bootstrap-3.3.4/js/tests/unit/tab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3774">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homepage/static/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="910">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homepage/templates/timer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769" vertical-offset="34" max-vertical-offset="5576">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58938247" vertical-offset="1224" max-vertical-offset="3502">
-          <caret line="105" column="3" selection-start-line="105" selection-start-column="3" selection-end-line="105" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.46045503" vertical-offset="170" max-vertical-offset="3468">
+          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
           <folding />
         </state>
       </provider>

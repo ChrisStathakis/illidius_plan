@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
+    <!-- url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), -->
         {% load staticfiles %}
         <!-- Basic Page Needs
         ================================================== -->
@@ -20,13 +21,7 @@
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <!-- Ionicons Fonts Css -->
         <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
         <!-- animate css -->
@@ -52,8 +47,7 @@
         <script src="{% static 'js/owl.carousel.min.js' %}"></script>
         <!-- bootstrap js -->
 
-        <!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <!-- wow js -->
         <script src="{% static 'js/wow.min.js' %}"></script>
         <!-- slider js -->

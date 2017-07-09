@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ADMINS = [('christos', 'christosstath10@gmail.com')]
 
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-
     'homepage',
     'newsletter',
     'projects',
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'widget_tweaks',
     'robots',
-
 ]
 SITE_ID = 1
 MIDDLEWARE_CLASSES = [
