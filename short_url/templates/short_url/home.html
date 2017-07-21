@@ -4,26 +4,23 @@
     <link rel="stylesheet" href="{% static 'short_url/short_url.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
-
 {% endblock %}
 
 {% block content %}
     <div id="short-banner" class="row short-banner">
         <form method="post" id="banner-form" class="form-inline">{% csrf_token %}
             <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">URL</label>
-                <div class="input-group">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" class="form-control" id="id_url" name="url" placeholder="Put you url here" required>
-                    <div class="input-group-addon">.00</div>
-                </div>
-
-                <label class="sr-only" for="exampleInputAmount">Your Code</label>
-                <div class="input-group">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" class="form-control" name='costumer_code' id="costumer_code" placeholder="Put your code here">
-                    <div class="input-group-addon">.00</div>
-                </div>
+                {% for field in form %}
+                    <label class="sr-only" for="exampleInputAmount">{{ field.label_tag }}</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">{{ field.label_tag }}</div>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    <label class="alert-warning">{{ field.errors }}</label>
+                {% endfor %}
             </div>
             <button type="submit" class="btn btn-primary">Get Short URL</button>
         </form>
@@ -36,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                                <h2>Copy Input Value to Clipboard</h2>
+                                <h2>Results</h2>
                                 <input type="text" class="form-control" id="txt-copy" value="{{ message }}">
                                 <button type="button" data-clipboard-target="#txt-copy" class="btn btn-primary copy-button" alt="Copy to clipboard">Copy To Clipboard</button>
                             </div>
