@@ -19,7 +19,8 @@ class ShortHomepage(View):
             print(request.POST)
             form = ShortURLForm(request.POST)
             if form.is_valid():
-                data = form.save()
+                print(request.POST)
+                form.save()
                 new_url = ShortingURL.objects.last()
                 get_url = 'www.simply-chris.com/s/%s/' % new_url.shortcode
                 messages.success(request, '%s' % get_url)
