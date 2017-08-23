@@ -68,10 +68,6 @@
         {% block my_static %}
 
         {% endblock %}
-
-        {% block additional_js %}
-
-        {% endblock %}
     </head>
     <body>
     <div id="fb-root"></div>
@@ -273,12 +269,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="block">
-                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">Θες να ρωτησεις κατι;</h2>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Θες να ρωτήσεις τις προτάσεις μου; <br>Θες ένα πιο προσωπικό website;</p>
-                                <a href="{% url 'contact' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Επικοινωνήστε μαζί μου</a>
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">NewsLetter</h2>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+                                   Εγγραφή στο NewsLetter!
+                                </p>
+                                <form id="subscribe" method="post">{% csrf_token %}
+                                    {{ form }}
+                                    <button class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms" type="submit" value="Subscribe" id="email_submit">
+                                        Subscribe
+                                    </button>
+                                </form>
                             </div>
+
                         </div>
-                        
                     </div>
                 </div>
             </section>
@@ -287,8 +290,8 @@
             Footer Section Start
             ================================================== -->
         {% endblock %}
-            <footer id="footer">
-                <div class="container">
+    <footer id="footer">
+        <div class="container">
                     <div class="col-md-8">
                         <p class="copyright">Copyright: <span>2017</span> . Design and Developed by <a href="/">Christos Stathakis</a></p>
                     </div>
@@ -317,7 +320,10 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-            </footer> <!-- /#footer -->
-        </body>
-    </html>
+        </div>
+    </footer> <!-- /#footer -->
+    </body>
+    {% block additional_js %}
+
+    {% endblock %}
+</html>

@@ -3,6 +3,7 @@ from django.views.generic import View, FormView, CreateView, DetailView, ListVie
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.http import JsonResponse
+from django.conf import settings
 from .models import *
 from newsletter.forms import Join, JoinForm
 from blog.models import Post, PostCategory, PostTags, Gallery
@@ -17,12 +18,14 @@ from django.views.decorators.cache import cache_page, cache_control
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
 
+
 def homepage_initial_data():
     page_info = get_object_or_404(WelcomePage, id=WELCOME_PAGE_ID)
     about = get_object_or_404(AboutMe, id=ABOUT_ID)
     services = Services.objects.all()
     projects = Projects.my_query.active()
     return [page_info, about, services, projects]
+
 
 def about_initial_data():
     about_page_info = AboutPage.objects.filter(active=True).last()
@@ -31,11 +34,24 @@ def about_initial_data():
     about_clients = AboutClients.objects.filter(page_related=about_page_info)
     return [about_page_info, about_messages, about_techo, about_clients]
 
+
 class Homepage(View):
+    form_class = JoinForm
+    template_name = 'timer/index.html'
+
     def get(self, request):
         page_info, about, services, projects = homepage_initial_data()
+        form = self.form_class
         context = locals()
-        return render_to_response('timer/index.html', context)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        context = locals()
+        return render(request, self.template_name, context)
+
 
 class HomePageEng(View):
     def get(self, request):

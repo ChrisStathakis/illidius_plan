@@ -3,14 +3,18 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from mptt.models import MPTTModel, TreeForeignKey
+from tinymce.models import HTMLField
 # Create your models here.
 
 
 def post_upload(instance, filename):
     return 'post/%s/%s' % (instance.title, filename)
 
+
 def gallery_upload(instance, filename):
     return 'gallery/%s/%s' % (instance.title, filename)
+
 
 class PostTags(models.Model):
     title = models.CharField(max_length=100, unique=True)
@@ -18,10 +22,19 @@ class PostTags(models.Model):
     def __str__(self):
         return self.title
 
-class PostCategory(models.Model):
+
+class PostCategory(MPTTModel):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(blank=True, null=True, allow_unicode=True)
     content = models.CharField(max_length=150, null=True, blank=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+
+    class MTTPMeta:
+        order_insertion_by = ['title']
+
+
+    class Meta:
+        verbose_name_plural = 'Site Categories'
 
     def __str__(self):
         return self.title
@@ -30,11 +43,12 @@ class PostCategory(models.Model):
         counts = Post.objects.filter(category=self).count() if Post.objects.filter(category=self) else 0
         return counts
 
+
 class Post(models.Model):
     active = models.BooleanField(default=True)
     active_eng = models.BooleanField(default=True)
     title = models.CharField(max_length=100, unique=True, verbose_name='Title')
-    content = models.TextField(verbose_name='Content', help_text='Use Html!!!')
+    content = HTMLField()
     keywords = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
     title_eng = models.CharField(max_length=100, blank=True, null=True, verbose_name='Title ENG')

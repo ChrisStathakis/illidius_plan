@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'widget_tweaks',
     'robots',
+    'mptt',
+    'tinymce',
 ]
 SITE_ID = 1
 MIDDLEWARE_CLASSES = [
@@ -111,11 +113,12 @@ DATABASES = {
 }
 '''
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('NAME'),
-        'USER':config('USER'),
+        'USER': 'pathzaqsaisfep',
         'PASSWORD':config('PASSWORD'),
         'HOST':config('HOST'),
         'PORT':'5432',
@@ -197,3 +200,7 @@ MEDIA_URL = 'https://s3.%s.amazonaws.com/%s/media/' % (AWS_REGION, AWS_STORAGE_B
 MEDIA = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
+
+
+MAILCHIMP_API_KEY = config('MAILCHIMP_API_KEY')
+MAILCHIMP_SUBSCRIBE_LIST_ID = config('MAILCHIMP_SUBSCRIBE_LIST_ID')

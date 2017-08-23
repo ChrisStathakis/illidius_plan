@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Post, PostCategory, Gallery, PostTags
+from mptt.admin import DraggableMPTTAdmin
 # Register your models here.
+
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -24,6 +26,6 @@ class PostAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(PostCategory)
+admin.site.register(PostCategory, DraggableMPTTAdmin)
 admin.site.register(Gallery)
 admin.site.register(PostTags)

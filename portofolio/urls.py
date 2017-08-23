@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic.base import RedirectView
-
+from newsletter.views import subscribe
 from blog.views import *
 from short_url.views import *
 
@@ -48,6 +48,8 @@ urlpatterns = [
     url(r'^en/blog/(?P<slug>[-\w]+)/$', PostPageEng.as_view(), name='blog_page_eng'),
     url(r'^en/contact/$', ContactPageEng.as_view(), name='contact_eng'),
     url(r'^en/project/(?P<slug>[-\w]+)/$', ProjectPageEng.as_view(), name='project_page_eng'),
+    url(r'^subscribe/$', view=subscribe, name='subscribe'),
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', include('robots.urls')),
     #test_urls
