@@ -26,6 +26,10 @@ class PostAdmin(admin.ModelAdmin):
     )
 
 
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['image_tiny_tag', 'title', 'url_ready']
+    readonly_fields = ['image_tiny_tag', 'url_ready']
+
 admin.site.register(PostCategory, DraggableMPTTAdmin)
-admin.site.register(Gallery)
+admin.site.register(Gallery, GalleryAdmin)
 admin.site.register(PostTags)

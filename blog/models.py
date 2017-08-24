@@ -3,10 +3,13 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
+
 from mptt.models import MPTTModel, TreeForeignKey
 from tinymce.models import HTMLField
 # Create your models here.
 
+MEDIAURL = 'https://illidius-plan.s3.amazonaws.com/media'
 
 def post_upload(instance, filename):
     return 'post/%s/%s' % (instance.title, filename)
@@ -32,7 +35,6 @@ class PostCategory(MPTTModel):
     class MTTPMeta:
         order_insertion_by = ['title']
 
-
     class Meta:
         verbose_name_plural = 'Site Categories'
 
@@ -48,11 +50,11 @@ class Post(models.Model):
     active = models.BooleanField(default=True)
     active_eng = models.BooleanField(default=True)
     title = models.CharField(max_length=100, unique=True, verbose_name='Title')
-    content = HTMLField()
+    content = HTMLField(blank=True, null=True)
     keywords = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=100, blank=True)
     title_eng = models.CharField(max_length=100, blank=True, null=True, verbose_name='Title ENG')
-    content_eng = models.TextField(verbose_name='Content_eng', help_text='Use Html!!!', blank=True, null=True)
+    content_eng = HTMLField(verbose_name='Content in eng', help_text='Use Html!!!', blank=True, null=True)
     keywords_eng = models.CharField(max_length=100, blank=True, null=True)
     description_eng = models.CharField(max_length=100, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='user')
@@ -89,9 +91,20 @@ class Post(models.Model):
             self.likes.add(user)
         self.save()
 
+
 class Gallery(models.Model):
     title = models.CharField(default='Gallery', max_length=30)
     file = models.ImageField(upload_to=gallery_upload)
 
+    class Meta:
+        verbose_name_plural = 'Gallery'
+
     def __str__(self):
         return self.title
+
+    def image_tiny_tag(self):
+        return mark_safe('<img width="50px" height="50px" src="%s/%s" />' % (MEDIAURL, self.file))
+    image_tiny_tag.short_description = 'Image'
+
+    def url_ready(self):
+        return self.file.url
