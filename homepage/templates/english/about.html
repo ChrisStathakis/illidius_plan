@@ -89,7 +89,7 @@
                                     <img src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title_eng }}">
                                 </div>
                                 <h3 class="team_name">{{ techo.title_eng }}</h3>
-                                <p class="team_designation">{{ techo.text_eng }}</p>
+                                <p class="team_designation">{{ techo.text_eng|safe }}</p>
                                 <p class="team_text"></p>
                             </div>
                         </div>
@@ -105,12 +105,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Our Happy Clinets</h2>
-                        <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
+                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Lastest Projects</h2>
+                        <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Some demo websites made for fun</p>
                         <div id="clients-logo" class="owl-carousel">
-                            {% for client in about_clients %}
+                            {% for project in projects %}
                                 <div>
-                                    <img src="{{ client.image.url }}" alt="{{ client.title_eng }}">
+                                    <a href="{% url 'project_page_eng' project.slug %}"><img src="{{ project.image.url }}" alt="{{ project.title_eng }}"></a>
                                 </div>
                             {% endfor %}
                         </div>

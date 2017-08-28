@@ -17,11 +17,13 @@ class ImageProductManager(models.Manager):
      def post_related(self, post):
          return super(ImageProductManager, self).filter(project_related = post)
 
+
 class ProjectsManager(models.Manager):
     def active(self):
         return super(ProjectsManager, self).filter(active=True)
+
     def demo_sites(self):
-        return super(ProjectsManager, self).filter(active= True, demo= True)
+        return super(ProjectsManager, self).filter(active= True, demo=True)
 
 
 class Projects(models.Model):

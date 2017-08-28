@@ -35,7 +35,64 @@
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <!-- responsive css -->
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-        
+        <style>
+            /*==========  Mobile First Method  ==========*/
+
+            /* Custom, iPhone Retina */
+            @media only screen and (min-width : 320px) {
+
+            }
+
+            /* Extra Small Devices, Phones */
+            @media only screen and (min-width : 480px) {
+
+            }
+
+            /* Small Devices, Tablets */
+            @media only screen and (min-width : 768px) {
+
+            }
+
+            /* Medium Devices, Desktops */
+            @media only screen and (min-width : 992px) {
+
+            }
+
+            /* Large Devices, Wide Screens */
+            @media only screen and (min-width : 1200px) {
+
+            }
+
+
+
+            /*==========  Non-Mobile First Method  ==========*/
+
+            /* Large Devices, Wide Screens */
+            @media only screen and (max-width : 1200px) {
+
+            }
+
+            /* Medium Devices, Desktops */
+            @media only screen and (max-width : 992px) {
+
+            }
+
+            /* Small Devices, Tablets */
+            @media only screen and (max-width : 768px) {
+
+            }
+
+            /* Extra Small Devices, Phones */
+            @media only screen and (max-width : 480px) {
+
+            }
+
+            /* Custom, iPhone Retina */
+            @media only screen and (max-width : 320px) {
+
+            }
+        </style>
+
         <!-- Template Javascript Files
         ================================================== -->
         <!-- modernizr js -->
@@ -54,6 +111,7 @@
         <script src="{% static 'js/jquery.fancybox.js' %}"></script>
         <!-- template main js -->
         <script src="{% static 'js/main.js' %}"></script>
+
         {% block my_static %}
 
         {% endblock %}
@@ -86,7 +144,6 @@
                     <span class="icon-bar"></span>
                     </button>
                     <!-- /responsive nav button -->
-                    
                     <!-- logo -->
                     <div class="navbar-brand">
                         <a href="{% url 'homepage_eng' %}" >
@@ -132,16 +189,15 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="block wow fadeInUp" data-wow-delay=".3s">
-
                             <!-- Slider -->
                             <section class="cd-intro">
                                 <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
-                                <span>We can create and design</span><br>
+                                <span>A blog about </span><br>
                                 <span class="cd-words-wrapper">
-                                    <b class="is-visible">Websites</b>
-                                    <b>Eccommerce</b>
-                                    <b>Blogs</b>
-                                    <b>Portofolios</b>
+                                    <b class="is-visible">Creating sites with Django</b>
+                                    <b>Python tips</b>
+                                    <b>Html CSS</b>
+                                    <b>Javascript</b>
                                 </span>
                                 </h1>
                                 </section> <!-- cd-intro -->
@@ -150,16 +206,38 @@
                                     In a sea of ordinary, make sure your website is set apart from the competition.
                                 </h2>
                                 <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="#works" data-section="#works" >View Works</a>
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             </section><!--/#main-slider-->
-            <!--
-            ==================================================
-            Slider Section Start
-            ================================================== -->
+            <section id="feature">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Blog</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Discover my latest posts
+                        </p>
+                    </div>
+                    <div class="row">
+                        {% for post in blog %}
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <img class="img-responsive" src="{{ post.file.url }}">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="{% url 'blog_page_eng' post.slug %}">{{ post.title_eng }}</a></h4>
+                                    <p>{{ post.content_eng|truncatechars_html:20 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section> <!-- /#feature -->
             <section id="about">
                 <div class="container">
                     <div class="row">
@@ -181,10 +259,6 @@
 
                 </div>
             </section> <!-- /#about -->
-            <!--
-            ==================================================
-            Portfolio Section Start
-            ================================================== -->
             <section id="works" class="works">
                 <div class="container">
                     <div class="section-heading">
@@ -222,54 +296,32 @@
                     </div>
                 </div>
             </section> <!-- #works -->
-            <!--
-            ==================================================
-            Portfolio Section Start
-            ================================================== -->
-            <section id="feature">
-                <div class="container">
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Offer From Me</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".5s">
-                            Discover my last projects
-                        </p>
-                    </div>
-                    <div class="row">
-                        {% for service in services %}
-                        <div class="col-md-4 col-lg-4 col-xs-12">
-                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                                <div class="media-left">
-                                    <div class="icon">
-                                        <i class="ion-ios-{{ service.icon }}"></i>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ service.title_eng }}</h4>
-                                    <p>{{ service.text_eng }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
-            </section> <!-- /#feature -->
-                            
-            <!--
-            ==================================================
-            Call To Action Section Start
-            ================================================== -->
             <section id="call-to-action">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
                             <div class="block">
-                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">You wanna hear my suggestions? <br>You want a different website that the othr use?</p>
-                                <a href="{% url 'contact_eng' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">NewsLetter</h2>
+                                {% if messages %}
+                                    <ul class="messages">
+                                        {% for message in messages %}
+                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
+                                  Sign in!
+                                </p>
+                                <form id="subscribe" method="post">{% csrf_token %}
+                                    {{ form }}
+                                    <button class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms" type="submit" value="Subscribe" id="email_submit">
+                                        Subscribe
+                                    </button>
+                                </form>
                             </div>
+
                         </div>
-                        
                     </div>
                 </div>
             </section>

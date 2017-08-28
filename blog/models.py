@@ -11,12 +11,21 @@ from tinymce.models import HTMLField
 
 MEDIAURL = 'https://illidius-plan.s3.amazonaws.com/media'
 
+
 def post_upload(instance, filename):
     return 'post/%s/%s' % (instance.title, filename)
 
 
 def gallery_upload(instance, filename):
     return 'gallery/%s/%s' % (instance.title, filename)
+
+
+class PostManager(models.Manager):
+    def active(self):
+        return super(PostManager, self).filter(active=True)
+
+    def return_last_posts(self):
+        return self.active().order_by('id').order_by('-id')[:6]
 
 
 class PostTags(models.Model):
@@ -42,7 +51,7 @@ class PostCategory(MPTTModel):
         return self.title
 
     def count_posts(self):
-        counts = Post.objects.filter(category=self).count() if Post.objects.filter(category=self) else 0
+        counts = Post.my_query.active().filter(category=self).count() if Post.my_query.active().filter(category=self) else 0
         return counts
 
 
@@ -65,6 +74,11 @@ class Post(models.Model):
     file = models.ImageField(verbose_name='Image', help_text='1332*550')
     update = models.BooleanField(default=False)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')
+    my_query = PostManager()
+    manager = models.Manager()
+
+    class Meta:
+        ordering = ['-id']
 
     def __str__(self):
         return self.title
