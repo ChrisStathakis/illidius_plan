@@ -1,5 +1,7 @@
-{% extends 'timer/index.html' %}{% load static %}
+{% extends 'english/index.html' %}
+{% load staticfiles %}
 
+{% block seo %} {% endblock %}
 {% block my_static %}
     <link rel="stylesheet" href="{% static 'short_url/short_url.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -7,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <div id="short-banner" class="row short-banner">
+    <div id="short-banner" class="global-page-header">
         <form method="post" id="banner-form" class="form-inline">{% csrf_token %}
             <div class="form-group">
                 {% for field in form %}
@@ -24,7 +26,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Get Short URL</button>
         </form>
-
         {% if messages %}
             {% for message in messages %}
                  <div class="row">
@@ -48,14 +49,10 @@
 {% block additional_js %}
     <script type="text/javascript">
           $(document).ready(function(){
-            $('#header').load('../header-ads.html');
-            $('#footer').load('../footer-ads.html');
-
             var clipboard = new Clipboard('.btn');
              clipboard.on('success', function(e) {
                 console.log(e);
             });
-
             clipboard.on('error', function(e) {
                 console.log(e);
             });

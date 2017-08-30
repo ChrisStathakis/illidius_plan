@@ -141,7 +141,7 @@ class WorksEng(ListView):
         return context
 
 
-#@cache_page(60*15)
+# @cache_page(60*15)
 class BlogPage(ListView):
     model = Post
     template_name = 'timer/blog-left-sidebar.html'
@@ -180,6 +180,7 @@ class BlogPageEng(ListView):
         posts = self.object_list
         context = locals()
         return context
+
 
 class PostPage(DetailView):
     model = Post
@@ -319,26 +320,8 @@ class BasicUploadView(View):
         return JsonResponse(data)
 
 
-
-
 def cache_clear(request):
-    cache.clear()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 '''

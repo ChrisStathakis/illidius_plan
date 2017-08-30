@@ -86,7 +86,7 @@
                         <div class="col-md-3">
                             <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
                                 <div class="team-img">
-                                    <img src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title_eng }}">
+                                    <img width="300px" height="200px" src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title_eng }}">
                                 </div>
                                 <h3 class="team_name">{{ techo.title_eng }}</h3>
                                 <p class="team_designation">{{ techo.text_eng|safe }}</p>
@@ -110,7 +110,9 @@
                         <div id="clients-logo" class="owl-carousel">
                             {% for project in projects %}
                                 <div>
-                                    <a href="{% url 'project_page_eng' project.slug %}"><img src="{{ project.image.url }}" alt="{{ project.title_eng }}"></a>
+                                    <a href="{% url 'project_page_eng' project.slug %}">
+                                        <img class="img-rounded" src="{{ project.image.url }}" alt="{{ project.title_eng }}">
+                                    </a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -137,5 +139,5 @@
                     </div>
                 </div>
             </section>
-            <!--
+
 {% endblock %}

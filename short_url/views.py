@@ -8,12 +8,14 @@ from .forms import *
 
 
 class ShortHomepage(View):
-    template = 'short_url/home.html'
+    template = 'short_url/index.html'
+
     def get(self, request, *args, **kwargs):
-        #ShortingURL.objects.all().delete()
+        # ShortingURL.objects.all().delete()
         form = ShortURLForm()
         context = locals()
         return render(request, self.template, context)
+
     def post(self, request, *args, **kwargs):
         if request.POST:
             print(request.POST)
@@ -27,6 +29,7 @@ class ShortHomepage(View):
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         context = locals()
         return render(request, self.template, context)
+
 
 def redirect_view(request, slug):
     get_url = get_object_or_404(ShortingURL, shortcode=slug)
