@@ -75,7 +75,7 @@ class Post(models.Model):
     update = models.BooleanField(default=False)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')
     my_query = PostManager()
-    manager = models.Manager()
+    objects = models.Manager()
 
     class Meta:
         ordering = ['-id']
