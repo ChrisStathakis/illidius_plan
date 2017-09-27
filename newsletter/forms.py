@@ -9,6 +9,7 @@ class JoinForm(forms.ModelForm):
                                                             'placeholder': 'Γράψτε το email σας',
                                                             })
                              )
+    
     class Meta:
         model = Join
         fields = ['email']
@@ -32,6 +33,7 @@ class JoinFormEng(forms.ModelForm):
                                                             'placeholder': 'Fill with your email',
                                                             })
                              )
+
     class Meta:
         model = Join
         fields = ['email']
@@ -48,6 +50,7 @@ class JoinFormEng(forms.ModelForm):
             api.lists.subscribe(LIST_ID, {'email': email})
         except:
             pass
+
 
 
 

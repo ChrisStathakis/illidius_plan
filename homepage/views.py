@@ -78,11 +78,23 @@ class HomePageEng(View):
 
 
 class About(View):
+    form_class = JoinFormEng
+    template_name = 'timer/about.html'
+    
     def get(self, request):
         page_info, about, services, projects = homepage_initial_data()
         about_page_info, about_messages, about_techo, projects = about_initial_data()
         context = locals()
-        return render_to_response('timer/about.html', context)
+        return render_to_response(self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thank you for the subscribe!')
+        context = locals()
+        context.update(csrf(request))
+        return render_to_response(self.template_name, context)
 
 
 class AboutEng(View):
@@ -196,7 +208,7 @@ class PostPage(DetailView):
 
 class PostPageEng(DetailView):
     model = Post
-    template_name = 'timer/single-post.html'
+    template_name = 'english/single-post.html'
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):

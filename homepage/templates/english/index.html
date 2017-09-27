@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% load staticfiles %}
 <html class="no-js">
     <head>
-        {% load staticfiles %}
+
         <!-- Basic Page Needs
         ================================================== -->
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+        <link rel="icon" type="image/png" href="{% static 'images/my_images/logo.png' %}">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/my_images/favicon.ico' %}">
         {% block seo %}
             <title>{{ page_info.title_eng }}</title>
             <meta name="description" content="{{ page_info.seo_description_eng }}">
@@ -311,7 +312,7 @@
                                     </ul>
                                 {% endif %}
                                 <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">
-                                  Sign in!
+                                  Get the lastest info and  news first!
                                 </p>
                                 <form id="subscribe" method="post">{% csrf_token %}
                                     {{ form }}
@@ -339,13 +340,13 @@
                         <!-- Social Media -->
                         <ul class="social">
                             <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                <a target="_blank" href="https://www.facebook.com/christos.stathakis.39" class="Facebook">
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                                    <i class="ion-social-twitter"></i>
+                                <a target="_blank" href="https://github.com/Zefarak" class="Github">
+                                    <i class="ion-social-github"></i>
                                 </a>
                             </li>
                             <li>

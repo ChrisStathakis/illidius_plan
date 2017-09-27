@@ -1,7 +1,9 @@
 from django import forms
 from .models import Contact
 
-#data-wow-duration="500ms" data-wow-delay=".6s"
+#  data-wow-duration="500ms" data-wow-delay=".6s"
+
+
 class ContactForm(forms.ModelForm):
     name = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Your name',
                                                                    'class': 'form-group wow fadeInDown',
