@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'projects',
     'blog',
     'short_url',
+    'funny_projects',
 
     #third party
     'rest_framework',

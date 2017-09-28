@@ -198,6 +198,7 @@ class PostPage(DetailView):
     model = Post
     template_name = 'timer/single-post.html'
     slug_url_kwarg = 'slug'
+
     def get_context_data(self, **kwargs):
         object = self.object
         page_info = WelcomePage.objects.get(id=WELCOME_PAGE_ID)

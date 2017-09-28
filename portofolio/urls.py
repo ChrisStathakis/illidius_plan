@@ -24,6 +24,7 @@ from django.views.generic.base import RedirectView
 from newsletter.views import subscribe
 from blog.views import *
 from short_url.views import *
+from funny_projects.views import *
 
 sitemaps = {
     'blog': BlogSitemap,
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^gr/blog/(?P<slug>[-\w]+)/$', cache_page(60*2)(PostPage.as_view()), name='blog_page'),
     url(r'^gr/contact/$', ContactPage.as_view(), name='contact'),
     url(r'^gr/project/(?P<slug>[-\w]+)/$', ProjectPage.as_view(), name='project_page'),
+
     #english
     url(r'^$', HomePageEng.as_view(), name='homepage_eng'),
     url(r'^about/$', AboutEng.as_view(), name='about_eng'),
@@ -53,6 +55,12 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', include('robots.urls')),
+
+    #  funny projects
+    url(r'^gym/$', view=GymPage.as_view(), name='gym_page'),
+    url(r'^gym/(?P<dk>\d+)/$', view=gym_person_page, name='gym_page_id'),
+
+
     #test_urls
     url(r'^create_blog/$', view=blog_create, name='create_blog'),
     url(r'^basic-upload/$', BasicUploadView.as_view(), name='basic_upload'),
@@ -64,6 +72,6 @@ urlpatterns = [
     url(r'^shorting-url/$', ShortHomepage.as_view(), name='shorting_url'),
     url(r'^s/(?P<slug>[-\w]+)/$', view=redirect_view, name='redirect_result'),
 
-    url(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='index'),
+    #url(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

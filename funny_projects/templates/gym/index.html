@@ -1,0 +1,13 @@
+{% extends 'english/index.html' %}
+
+
+{% block content %}
+
+    <ul style="margin-top: 20%" class="list-group">
+    {% for person in object_list %}
+          <li class="list-group-item"><a href="{% url 'gym_page_id' person.id %}">{{ person }}</a><a href="">Edit</a> </li>
+    {% endfor %}
+
+    </ul>
+
+{% endblock %}

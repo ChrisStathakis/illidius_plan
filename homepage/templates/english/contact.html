@@ -13,7 +13,7 @@
         ================================================== -->
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="../../static/css/main.css">
         <!-- responsive css -->
         <link rel="stylesheet" href="../../static/css/responsive.css">
-        
+
         <!-- Template Javascript Files
         ================================================== -->
         <!-- modernizr js -->
@@ -65,7 +65,7 @@
                             <h2>Contact</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/">
+                                    <a href="{% url 'homepage_eng' %}">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>
@@ -90,17 +90,13 @@
                         <div class="block">
                             <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Contact With Me</h2>
                             <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ea!
-                                 consectetur adipisicing elit. Dolore, ea!
+                                Feel free to ask anything!
                             </p>
                             <div class="contact-form">
                                 <form id="contact-form" method="post"  role="form">{% csrf_token %}
-
-                        
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
                                         <input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
                                     </div>
-                                    
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
                                         <input type="email" placeholder="Your Email" class="form-control" name="email" id="email" >
                                     </div>
@@ -108,16 +104,12 @@
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
                                         <input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
                                     </div>
-                                    
                                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
                                         <textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>    
                                     </div>
-                                    
-                                    
                                     <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
                                         <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Send Message">
-                                    </div>                      
-                                    
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -126,12 +118,10 @@
                          <div class="map-area">
                             <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Find Us</h2>
                             <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                                Si aute quis eu proident o cupidatat ne anim nescius, et est praesentibus, o quorum vidisse expetendis, nostrud eram quibusdam ad nam nostrud ubi.
-                                
+                                My name is Christos Stathakis and i am living in Greece.
                             </p>
                             <div class="map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.277552998015!2d90.3678744!3d23.773128800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0ae4adf3cb9%3A0x7f2cf443b764e4a4!2sShishu+Mela!5e0!3m2!1sen!2s!4v1435516022247" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                
+                                <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=molaoi%2C%20GR&t=&z=12&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>embed google map <a href="http://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{overflow:hidden;height:500px;width:600px;}.gmap_canvas {background:none!important;height:500px;width:600px;}</style></div>
                             </div>
                         </div>
                     </div>
@@ -140,35 +130,30 @@
                     <div class="col-md-3">
                         <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
                             <i class="ion-ios-location-outline"></i>
-                            <h5>125 , Kings Street,Melbourne <br>United Kingdom,600562</h5>
+                            <h5>Asopos Monemvasias <br>Greece, 23056</h5>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
                             <i class="ion-ios-location-outline"></i>
-                            <h5>125 , Kings Street,Melbourne <br>United Kingdom,600562</h5>
+                            <h5>Pandoras 4-6 Galatsi <br>Athens,600562</h5>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
                             <i class="ion-ios-email-outline"></i>
-                            <p>support@themefisher.com<br>support@themefisher.com</p>
+                            <p>christosstath10@gmail.com<br>lirageika@hotmail.gr</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
                             <i class="ion-ios-telephone-outline"></i>
-                            <p>+07 052 245 022<br>+07 999 999 999</p>
+                            <p>+6944899458<br></p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
-
-
 
         <!-- 
         ================================================== 
@@ -176,16 +161,7 @@
         ================================================== -->
         <section id="call-to-action">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="block">
-                            <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">INTERESTED IN WORKING TOGETHER? ?</h2>
-                            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,</br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                            <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
-                        </div>
-                    </div>
-                    
-                </div>
+
             </div>
         </section>
 

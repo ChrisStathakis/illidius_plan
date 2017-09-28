@@ -1,0 +1,120 @@
+{% extends 'english/index.html' %}
+
+
+{% block content %}
+    <div style="margin-top: 15%" class="row">
+        <div class="col-md-4">
+            <h2>{{ person }}</h2>
+            <br>
+            <form method="post">{% csrf_token %}
+            {{ form.as_ul }}
+            <button class="button" type="submit">Save</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h4>Deadlift - {{ person.deadlift }} kg</h4>
+            <table class="table">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="number">Week 1</th>
+                <th class="number">Week 2</th>
+                <th class="number">Week 3</th>
+                <th class="number">Week 4</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr>
+                 {% for set in deadlift %}
+                    <th class="tdYellow">Set {{ forloop.counter }}</th>
+                     <td class="number"><span style="color: red;">{{ set.0.0|floatformat:2 }} kg</span> x {{ set.0.1 }} reps </td>
+                    <td class="number"><span style="color: red;">{{ set.1.0|floatformat:2 }} kg</span> x {{ set.1.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.2.0|floatformat:2 }} kg</span> x {{ set.2.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.3.0|floatformat:2 }} kg</span> x {{ set.3.1 }} reps</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+            <br>
+            <h4>Shoulders press -- {{ person.shoulder_press }} kg</h4>
+            <table class="table">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="number">Week 1</th>
+                <th class="number">Week 2</th>
+                <th class="number">Week 3</th>
+                <th class="number">Week 4</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr>
+                 {% for set in shoulder_press %}
+                    <th class="tdYellow">Set {{ forloop.counter }}</th>
+                     <td class="number"><span style="color: red;">{{ set.0.0|floatformat:2 }} kg</span> x {{ set.0.1 }} reps </td>
+                    <td class="number"><span style="color: red;">{{ set.1.0|floatformat:2 }} kg</span> x {{ set.1.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.2.0|floatformat:2 }} kg</span> x {{ set.2.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.3.0|floatformat:2 }} kg</span> x {{ set.3.1 }} reps</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h4>Squats -- {{ person.squats }} kg</h4>
+            <table class="table">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="number">Week 1</th>
+                <th class="number">Week 2</th>
+                <th class="number">Week 3</th>
+                <th class="number">Week 4</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr>
+                 {% for set in squats %}
+                    <th class="tdYellow">Set {{ forloop.counter }}</th>
+                     <td class="number"><span style="color: red;">{{ set.0.0|floatformat:2 }} kg</span> x {{ set.0.1 }} reps </td>
+                    <td class="number"><span style="color: red;">{{ set.1.0|floatformat:2 }} kg</span> x {{ set.1.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.2.0|floatformat:2 }} kg</span> x {{ set.2.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.3.0|floatformat:2 }} kg</span> x {{ set.3.1 }} reps</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        <br>
+         <h4>Bench Press -- {{ person.bench_press }} kg</h4>
+            <table class="table">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="number">Week 1</th>
+                <th class="number">Week 2</th>
+                <th class="number">Week 3</th>
+                <th class="number">Week 4</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr>
+                 {% for set in bench_press %}
+                    <th class="tdYellow">Set {{ forloop.counter }}</th>
+                     <td class="number"><span style="color: red;">{{ set.0.0|floatformat:2 }} kg</span> x {{ set.0.1 }} reps </td>
+                    <td class="number"><span style="color: red;">{{ set.1.0|floatformat:2 }} kg</span> x {{ set.1.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.2.0|floatformat:2 }} kg</span> x {{ set.2.1 }} reps</td>
+                    <td class="number"><span style="color: red;">{{ set.3.0|floatformat:2 }} kg</span> x {{ set.3.1 }} reps</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <ul style="margin-top: 20%" class="list-group">
+    {% for person in object_list %}
+          <li class="list-group-item"><a href="">{{ person }}</a><a href="">Edit</a> </li>
+    {% endfor %}
+
+    </ul>
+
+{% endblock %}

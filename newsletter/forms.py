@@ -4,6 +4,8 @@ import mailchimp
 from django.conf import settings
 
 
+
+
 class JoinForm(forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control',
                                                             'placeholder': 'Γράψτε το email σας',

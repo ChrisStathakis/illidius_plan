@@ -118,6 +118,7 @@ class AboutPage(models.Model):
     def __str__(self):
         return self.title
 
+
 class AboutMessages(models.Model):
     title = models.CharField(max_length=50)
     text = models.TextField()
@@ -131,6 +132,7 @@ class AboutMessages(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class AboutTecho(models.Model):
     active = models.BooleanField(default=True)
