@@ -49,13 +49,13 @@
                                     <div class="overlay">
                                         <div class="buttons">
                                             <a rel="gallery" class="fancybox" href="{{ project.image.url }}">Demo</a>
-                                            <a target="" href="{% url 'project_page' project.slug %}">Details</a>
+                                            <a target="" href="{% url 'project_page_eng' project.slug %}">Details</a>
                                         </div>
                                     </div>
                                 </div>
                                 <figcaption>
                                 <h4>
-                                <a href="{% url 'project_page' project.slug %}">
+                                <a href="{% url 'project_page_eng' project.slug %}">
                                     {{ project.title_eng }}
                                 </a>
                                 </h4>

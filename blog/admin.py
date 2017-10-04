@@ -10,12 +10,18 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'category', 'update']
     list_filter = ['active', 'category', 'update']
     fieldsets = (
-        ('Βασικά Χαρακτηριστικά', {
-            'fields': (('active', 'active_eng', 'update'),
+        ('Greek Page', {
+            'fields': (('active', 'update'),
                       ('title', 'keywords', 'description'),
-                      ('title_eng', 'keywords_eng', 'description_eng'),
-                      ('content', 'content_eng'),
 
+                      ('content', ),
+
+                       )
+        }),
+        ('English Page', {
+            'fields': ('active_eng',
+                       ('title_eng', 'keywords_eng', 'description_eng'),
+                       'content_eng'
                        )
         }),
         ('Εικόνες', {

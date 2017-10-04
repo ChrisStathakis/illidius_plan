@@ -1,7 +1,7 @@
 {% extends 'english/index.html' %}
 {% load staticfiles %}
 {% block seo %}
-    <title>{{ page_info.title_eng }} - Blog</title>
+    <title xmlns="http://www.w3.org/1999/html">{{ page_info.title_eng }} - Blog</title>
     <meta name="description" content="A blog by Christos Stathakis about  Web developing, updates....">
     <meta name="keywords" content="Blog, python, django, Web developing, ">
     <meta name="author" content="">
@@ -36,18 +36,19 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="sidebar">
+                            <form action="" method="get" class="searchform" role="search">
                                 <div class="search widget">
-                                    <form action="" method="get" class="searchform" role="search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for...">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"> <i class="ion-search"></i> </button>
-                                            </span>
-                                            </div><!-- /input-group -->
-                                        </form>
-                                    </div>
-                                    <div class="author widget">
-                                        <img class="img-responsive" src="{% static 'images/my_images/personal.jpg' %}">
+                                    <div class="input-group">
+                                        {% if search_text %}
+                                            <input name="search_text" type="text" class="form-control" placeholder="{{ search_text }}">
+                                        {% else %} <input name="search_text" type="text" class="form-control" placeholder="Search for...">{% endif %}
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"> <i class="ion-search"></i> </button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </div>
+                                <div class="author widget">
+                                    <img class="img-responsive" src="{% static 'images/my_images/personal.jpg' %}">
                                         <div class="author-body text-center">
                                             <div class="author-img">
                                                 <img src="{{ page_info.personal_photo.url }}">
@@ -58,17 +59,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="categories widget">
-                                        <h3 class="widget-head">Categories</h3>
-                                        <ul>
-                                            {% for category in post_categories %}
+                                <div class="categories widget">
+                                    <h3 class="widget-head">Categories</h3>
+                                    <ul>
+                                        {% for category in post_categories %}
                                             <li>
-                                                <a href="">{{ category }}</a> <span class="badge">1</span>
+                                            {% if category.id|stringformat:"s" in cate_name %}
+                                                 <input onclick="this.form.submit()" name="cat_name" type="checkbox" value="{{ category.id }}" checked><label>{{ category }} {{ category.counts_posts_eng }}</label>
+                                               {% else %}
+                                                <input onclick="this.form.submit()" name="cat_name" type="checkbox" value="{{ category.id }}"><label>{{ category }} {{ category.counts_posts_eng }}</label>
+                                            {% endif %}
                                             </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </form>
                                     <div class="recent-post widget">
                                         <h3>Updates</h3>
                                         <ul>
@@ -90,7 +95,7 @@
                                         </div>
                                         <div class="blog-content">
                                             <h2 class="blogpost-title">
-                                            <a href="{% url 'blog_page_eng' post.slug %}">{{ post }}</a>
+                                            <a href="{% url 'blog_page_eng' post.slug %}">{{ post.title_eng }}</a>
                                             </h2>
                                             <div class="blog-meta">
                                                 <span>{{ post.publish }}</span>

@@ -94,6 +94,7 @@ WSGI_APPLICATION = 'portofolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+'''
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
@@ -104,6 +105,7 @@ CACHES = {
         }
     }
 }
+'''
 
 '''
 DATABASES = {
@@ -201,7 +203,17 @@ MEDIA_URL = 'https://s3.%s.amazonaws.com/%s/media/' % (AWS_REGION, AWS_STORAGE_B
 MEDIA = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
-
-
 MAILCHIMP_API_KEY = config('MAILCHIMP_API_KEY')
 MAILCHIMP_SUBSCRIBE_LIST_ID = config('MAILCHIMP_SUBSCRIBE_LIST_ID')
+
+# max file size
+MAX_FILE_SIZE = 2*1024*1024
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'width': '100%',
+    'height': 600,
+}

@@ -183,15 +183,24 @@ class BlogPageEng(ListView):
     template_name = 'english/blog-left-sidebar.html'
 
     def get_context_data(self, **kwargs):
-        #object_list = self.object_list
         page_info = WelcomePage.objects.get(id=WELCOME_PAGE_ID)
         about_me = AboutMe.objects.get(id=ABOUT_ID)
         post_categories = PostCategory.objects.all()
-        updates = self.object_list.filter(update = True)
+        updates = self.object_list.filter(update=True)
         post_tag = PostTags.objects.all()
         posts = self.object_list
+        search_text = self.request.GET.get('search_text')
+        cate_name = self.request.GET.getlist('cat_name')
         context = locals()
         return context
+
+    def get_queryset(self):
+        queryset = self.model.my_query.active_and_eng()
+        search_text = self.request.GET.get('search_text')
+        cate_name = self.request.GET.getlist('cat_name')
+        queryset = queryset.filter(category__id__in=cate_name) if cate_name else queryset
+        queryset = queryset.filter(Q(title_eng__icontains=search_text) | Q(category__title__icontains=search_text)).distinct() if search_text else queryset
+        return queryset
 
 
 class PostPage(DetailView):
@@ -260,13 +269,12 @@ class ProjectPage(DetailView):
 
 class ProjectPageEng(DetailView):
     model = Projects
-    template_name = 'timer/single-portfolio.html'
+    template_name = 'english/single-portfolio.html'
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
         context = super(ProjectPageEng, self).get_context_data(**kwargs)
         context['images'] = ImageProject.my_query.post_related_and_active(post=self.object)
-        print(context['images'])
         return context
 
 

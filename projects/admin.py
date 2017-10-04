@@ -3,29 +3,32 @@ from .models import *
 # Register your models here.
 
 
-
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['title', 'active']
     list_filter = ['active', 'active_eng']
     fieldsets = (
-        ('Βασικά Χαρακτηριστικά', {
-            'fields':(('active', 'active_eng', 'demo'),
+        ('Greek', {
+            'fields': (('active', 'demo', 'short_description'),
                       ('title', 'seo_description', 'seo_keywords'),
-                      ('title_eng', 'seo_description_eng', 'seo_keywords_eng'),
+                      'description'
                       )
         }),
-        ('Page Info',{
-            'fields':(('image', 'category'),
-                      ('description', 'description_eng'),
+        ('English', {
+            'fields': (('active_eng', 'short_description_eng'),
+                       ('title_eng', 'seo_description_eng', 'seo_keywords_eng'),
+                       'description_eng'
+                       )
+        }),
+        ('Page Info', {
+            'fields': (('image', 'category'),
                       'href'
                       )
         }),
-        ('Seo',{'classes': ('collapse',),
-            'fields': ('slug', ),
+        ('Seo', {'classes': ('collapse',),
+                 'fields': ('slug', ),
         }),
-
-
     )
+
 
 class ImageProjectAdmin(admin.ModelAdmin):
     list_display = ['title', 'alt', 'project_related', 'active', ]
@@ -34,11 +37,7 @@ class ImageProjectAdmin(admin.ModelAdmin):
         ('Photo Info',{
             'fields':(('title', 'alt', 'active'),'project_related','image', 'text')
         }),
-
-
-
     )
-
 
 
 admin.site.register(Projects, ProjectAdmin)

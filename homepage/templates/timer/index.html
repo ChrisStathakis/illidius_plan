@@ -143,12 +143,12 @@
                             <!-- Slider -->
                             <section class="cd-intro">
                                 <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
-                                <span>Εδω δημιουργουμε και σχεδιαζουμε</span><br>
+                                <span>ενα blog που ασχολειτε με</span><br>
                                 <span class="cd-words-wrapper">
-                                    <b class="is-visible">Websites</b>
-                                    <b>Eshops</b>
-                                    <b>Blogs</b>
-                                    <b>Portofolios</b>
+                                    <b class="is-visible">Django <br> framework</b>
+                                    <b>Python Tips</b>
+                                    <b>HTML CSS</b>
+                                    <b>Javascript</b>
                                 </span>
                                 </h1>
                                 </section> <!-- cd-intro -->
@@ -187,6 +187,43 @@
 
                 </div>
             </section> <!-- /#about -->
+
+
+
+
+             <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="feature">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Blog</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Δες τα τελευταία μου Posts
+                        </p>
+                    </div>
+                    <div class="row">
+                        {% for service in services %}
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <img class="img-responsive" src="{{ service.file.url }}">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                   <h4 class="media-heading"><a href="{% url 'blog_page' service.slug %}">{{ service.title}}</a></h4>
+                                    <p>{{ service.content|safe|truncatechars_html:40 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </section> <!-- /#feature -->
+
             <!--
             ==================================================
             Portfolio Section Start
@@ -227,39 +264,7 @@
                     </div>
                 </div>
             </section> <!-- #works -->
-            <!--
-            ==================================================
-            Portfolio Section Start
-            ================================================== -->
-            <section id="feature">
-                <div class="container">
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Υπηρεσίες</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".5s">
-                            Δες τι προσφέρω
-                        </p>
-                    </div>
-                    <div class="row">
-                        {% for service in services %}
-                        <div class="col-md-4 col-lg-4 col-xs-12">
-                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                                <div class="media-left">
-                                    <div class="icon">
-                                        <i class="ion-ios-{{ service.icon }}"></i>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ service.title }}</h4>
-                                    <p>{{ service.text }}.ion-ios-americanfootball-outline:before</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
 
-                    </div>
-                </div>
-            </section> <!-- /#feature -->
-                            
             <!--
             ==================================================
             Call To Action Section Start

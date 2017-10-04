@@ -195,7 +195,7 @@
                                 <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
                                 <span>A blog about </span><br>
                                 <span class="cd-words-wrapper">
-                                    <b class="is-visible">Creating sites with Django</b>
+                                    <b class="is-visible">Django</b>
                                     <b>Python tips</b>
                                     <b>Html CSS</b>
                                     <b>Javascript</b>
@@ -212,6 +212,7 @@
                     </div>
                 </div>
             </section><!--/#main-slider-->
+
             <section id="feature">
                 <div class="container">
                     <div class="section-heading">
@@ -231,7 +232,7 @@
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading"><a href="{% url 'blog_page_eng' post.slug %}">{{ post.title_eng }}</a></h4>
-                                    <p>{{ post.content_eng|truncatechars_html:20 }}</p>
+                                    <p>{{ post.content_eng|safe|truncatechars_html:20 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -276,7 +277,7 @@
                                     <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
                                     <div class="overlay">
                                         <div class="buttons">
-                                            <a target="" href="{% url 'project_page' project.slug %}">Details</a>
+                                            <a href="{% url 'project_page_eng' project.slug %}">Details</a>
                                         </div>
                                     </div>
                                 </div>

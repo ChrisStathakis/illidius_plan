@@ -24,6 +24,9 @@ class PostManager(models.Manager):
     def active(self):
         return super(PostManager, self).filter(active=True)
 
+    def active_and_eng(self):
+        return self.active().filter(active_eng=True)
+
     def return_last_posts(self):
         return self.active().order_by('id').order_by('-id')[:6]
 
@@ -46,6 +49,7 @@ class PostCategory(MPTTModel):
 
     class Meta:
         verbose_name_plural = 'Site Categories'
+        unique_together = (('parent', 'slug'))
 
     def __str__(self):
         return self.title
@@ -53,6 +57,9 @@ class PostCategory(MPTTModel):
     def count_posts(self):
         counts = Post.my_query.active().filter(category=self).count() if Post.my_query.active().filter(category=self) else 0
         return counts
+
+    def counts_posts_eng(self):
+        return Post.my_query.active_and_eng().filter(category=self).count()
 
 
 class Post(models.Model):

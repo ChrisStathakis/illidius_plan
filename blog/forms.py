@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 from PIL import Image
 
-MAX_FILE_SIZE = 4*1024*1024
+MAX_FILE_SIZE = 2*1024*1024
 
 
 class PostCreate(forms.ModelForm):
@@ -67,7 +67,7 @@ class GalleryForm(forms.ModelForm):
         file = self.cleaned_data.get('file')
         if file:
             if file._size > MAX_FILE_SIZE:
-                raise forms.ValidationError('This file is bigger than 4 mb')
+                raise forms.ValidationError('This file is bigger than 2 mb')
             return file
         else:
             raise forms.ValidationError('Something wrong with this file')
