@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, View
 from django.template.context_processors import csrf
 from .models import *
 from .forms import *
@@ -42,3 +42,7 @@ def gym_person_page(request, dk):
     context = locals()
     context.update(csrf(request))
     return render(request, 'gym/gym_person_page.html', context)
+
+
+class CostManager(View):
+    pass

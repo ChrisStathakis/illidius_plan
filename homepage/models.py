@@ -2,17 +2,22 @@ from django.db import models
 
 # Create your models here.
 
+
 def about_upload(instance, filename):
     pass
+
 
 def welcome_upload(instance, filename):
     return 'homepage/%s/%s' % (instance.title, filename)
 
+
 def banner_upload(instance, filename):
     return 'banner/%s/%s' % (instance.title, filename)
 
+
 def tech_upload(instance, filename):
     return 'tech/%s/%s' % (instance.title, filename)
+
 
 class WelcomePage(models.Model):
     active = models.BooleanField(default=True)
@@ -23,12 +28,12 @@ class WelcomePage(models.Model):
     seo_keywords_eng = models.CharField(max_length=160, null=True, blank=True)
     seo_description_eng = models.CharField(max_length=160, null=True, blank=True)
 
-
     class Meta:
         verbose_name_plural = '1. Διαχείριση Αρχικής Σελίδας'
 
     def __str__(self):
         return self.title
+
 
 class MainBanner(models.Model):
     title = models.CharField(max_length=100)
@@ -51,12 +56,14 @@ class MainBanner(models.Model):
                         </p>
 """
 
+
 class AboutMe(models.Model):
     title = models.CharField(max_length=50, default='default')
     text = models.TextField(blank=True)
     title_eng = models.CharField(max_length=50, default='default')
     text_eng = models.TextField(blank=True)
     page_related = models.ForeignKey(WelcomePage, null=True)
+
     class Meta:
         verbose_name_plural = '2. About Me Info'
 

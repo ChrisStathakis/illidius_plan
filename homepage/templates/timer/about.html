@@ -26,7 +26,7 @@
                                         Αρχική Σελίδα
                                     </a>
                                 </li>
-                                <li class="active">Σχετικα</li>
+                                <li class="active">About</li>
                             </ol>
                         </div>
                     </div>
@@ -46,6 +46,9 @@
                     <div class="col-md-6">
                         <div class="block">
                             {{ about.text|safe }}
+                            <br><br>
+                             Μερικά παραδείγματα που χρησιμοποιείτε αυτη η τεχνολογια είναι τα εξής.. Instagram, Pinterest,
+                                    Disqus, Bitbucket, Nasa, The Washington Post.
                         </div>
                     </div>
                 </div>
@@ -66,8 +69,9 @@
                             {{ msg.title }}
                         </h2>
                         <p>
-                            {{ msg.text }}
+                            {{ msg.text|safe }}
                         </p>
+
                     </div>
                     {% endfor %}
                 </div>
@@ -82,7 +86,7 @@
         <section id="team">
             <div class="container">
                 <div class="row">
-                    <h2 class="subtitle text-center">Τεχνολογιες</h2>
+                    <h2 class="subtitle text-center">Modules and fun projects</h2>
                     {% for techo in about_techo %}
                         <div class="col-md-3">
                             <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
@@ -90,7 +94,7 @@
                                     <img src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title }}">
                                 </div>
                                 <h3 class="team_name">{{ techo.title }}</h3>
-                                <p class="team_designation">{{ techo.text }}</p>
+                                <p class="team_designation">{{ techo.text|safe }}</p>
                                 <p class="team_text"></p>
                             </div>
                         </div>
@@ -102,7 +106,7 @@
         <!--
         ==================================================
         Clients Section Start
-        ================================================== -->
+        ==================================================
         <section id="clients">
             <div class="container">
                 <div class="row">
@@ -120,7 +124,7 @@
                 </div>
             </div>
         </section>
-        
+        --.
         <!--
             ==================================================
             Call To Action Section Start
