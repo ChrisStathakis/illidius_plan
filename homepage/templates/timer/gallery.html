@@ -53,12 +53,12 @@
                     <div class="row infinite-container">
                         {% for project in object_list %}
                             <div class="col-sm-4 col-xs-12 infinite-item">
-                                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                                <figure style="height: 400px" class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                                     <div class="img-wrapper">
                                         <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
                                         <div class="overlay">
                                             <div class="buttons">
-                                                <a rel="gallery" class="fancybox" href="{{ project.image.url }}">Προβολή</a>
+                                                <!--<a rel="gallery" class="fancybox" href="{{ project.image.url }}">Προβολή</a> -->
                                                 <a target="" href="{% url 'project_page' project.slug %}">Λεπτομέριες</a>
                                             </div>
                                         </div>

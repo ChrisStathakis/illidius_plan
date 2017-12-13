@@ -30,7 +30,7 @@
                                         Projects
                                     </a>
                                 </li>
-                                <li class="active">Projects</li>
+                                <li class="active">{{ object }}</li>
                             </ol>
                         </div>
                     </div>
@@ -42,28 +42,28 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portfolio-single-img">
-                                <img class="img-responsive" alt="" src="{{ projects.image.url }}">
+                                <img class="img-responsive" alt="" src="{{ object.image.url }}">
                             </div>
                             <div class="block">
-                                <h2>{{ projects.title }}</h2>
+                                <h2>{{ object.title }}</h2>
                                 <div class="portfolio-meta">
                                    <span>{{ projects.day_added }}</span>|
                                    <span> Category:  {{ projects.category }}</span>|
-                                   <span> website: <a target="_blank" href="http://{{ projects.href }}">{{ projects.href }}</a></span>
+                                   <span> website: <a target="_blank" href="http://{{ object.href }}">{{ object.href|default_if_none:'Δε υπάρχει διαθέσιμο link' }}</a></span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                               {{ projects.description|safe }}
+                               {{ object.description|safe }}
                             </div>
-                             <a class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> Δες το Site</a>
-                             <a class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> Επισκέψου οτ github</a>
+                             <a target="_blank" href="{{ object.href }}"><i class="fa fa-twitter"></i> Δες το Site</a>
+                             <a target="_blank" href="{{ object.github }}" class="pull-right"><span class="fa fa-twitter"></span> Επισκέψου το github</a>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="works works-fit">
             <div class="container">
-                <h2 class="subtitle">Δες περισσότερα</h2>
+                <h2 class="subtitle">Δες περισσοτερα</h2>
                     <p class="subtitle-des">
                        Some screenshots about the project
                     </p>
@@ -75,12 +75,12 @@
                                     <img src="{{ image.image.url }}" class="img-responsive" alt="this is a title">
                                     <div class="overlay">
                                         <div class="buttons">
-                                            <a rel="gallery" class="fancybox" href="../../static/images/portfolio/item-1.jpg">Demo</a>
+                                            <a rel="gallery" class="fancybox" href="{{ image.image.url }}">Μεγιστοποίηση</a>
                                         </div>
                                     </div>
                                 </div>
                              <figcaption>
-                                 <h4><a href="#">{{ image.title }}</a></h4>
+                                 <h4>{{ image.title }}</h4>
                                  <p>{{ image.text }}</p>
                              </figcaption>
                          </figure>

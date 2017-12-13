@@ -119,6 +119,49 @@
                     </div>
                 </div>
             </section><!--/#main-slider-->
+
+              <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="works" class="works">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Τελευταια Project</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Δες και ανακάλυψε τα τελευταία μου projects.
+                        </p>
+                    </div>
+                    <div class="row">
+                        {% for project in projects %}
+                            <div class="col-sm-4 col-md-4 col-xs-12">
+                                <figure style="height: 400px" class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                                    <div class="img-wrapper">
+                                        <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
+                                        <div class="overlay">
+                                            <div class="buttons">
+                                                <a target="" href="{% url 'project_page' project.slug %}">Λεπτομέριες</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                    <h4>
+                                    <a href="{% url 'project_page' project.slug %}">
+                                        {{ project.title }}
+                                    </a>
+                                    </h4>
+                                    <p>
+                                        {{ project.short_description }}
+                                    </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section> <!-- #works -->
+
+
             <!--
             ==================================================
             Slider Section Start
@@ -144,48 +187,6 @@
 
                 </div>
             </section> <!-- /#about -->
-
-
-            <!--
-            ==================================================
-            Portfolio Section Start
-            ================================================== -->
-            <section id="works" class="works">
-                <div class="container">
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Τελευταια Project</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".5s">
-                            Δες και ανακάλυψε τα τελευταία μου projects.
-                        </p>
-                    </div>
-                    <div class="row">
-                        {% for project in projects %}
-                            <div class="col-sm-4 col-xs-12">
-                                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
-                                    <div class="img-wrapper">
-                                        <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
-                                        <div class="overlay">
-                                            <div class="buttons">
-                                                <a target="" href="{% url 'project_page' project.slug %}">Λεπτομέριες</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <figcaption>
-                                    <h4>
-                                    <a href="{% url 'project_page' project.slug %}">
-                                        {{ project.title }}
-                                    </a>
-                                    </h4>
-                                    <p>
-                                        {{ project.short_description }}
-                                    </p>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </section> <!-- #works -->
 
 
              <!--
