@@ -1,0 +1,11 @@
+{% load cookielaw_tags %}
+{% load i18n static %}
+<script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+
+<script type="application/javascript">
+$(document).ready(function () {
+   $('.close-cookies').click(function () {
+       $(this).parent().hide();
+   });
+});
+</script>

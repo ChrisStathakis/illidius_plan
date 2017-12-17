@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE html> {% load static %} {% load cookielaw_tags %}
 <html class="no-js">
     <head>
     <!-- url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), -->
-        {% load staticfiles %}
         <!-- Basic Page Needs
         ================================================== -->
         <meta charset="utf-8">
@@ -22,10 +21,12 @@
 
         {% include 'include_css.html' %}
         {% block my_static %}{% endblock %}
+        <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
 
     </head>
 
     <body>
+
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -126,6 +127,7 @@
             ================================================== -->
             <section id="works" class="works">
                 <div class="container">
+                    {% include 'cookielaw/banner.html' %}
                     <div class="section-heading">
                         <h1 class="title wow fadeInDown" data-wow-delay=".3s">Τελευταια Project</h1>
                         <p class="wow fadeInDown" data-wow-delay=".5s">
@@ -285,8 +287,10 @@
             </div>
         </div>
     </footer> <!-- /#footer -->
-    </body>
+
+
     {% block additional_js %}
 
     {% endblock %}
+    </body>
 </html>
