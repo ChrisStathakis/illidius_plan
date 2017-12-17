@@ -24,14 +24,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #ADMINS = [('christos', 'christosstath10@gmail.com')]
+
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', ]
 # Application definition
@@ -58,7 +60,7 @@ INSTALLED_APPS = [
     'robots',
     'mptt',
     'tinymce',
-    'cookielaw',
+
 ]
 SITE_ID = 1
 MIDDLEWARE_CLASSES = [

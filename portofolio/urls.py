@@ -54,7 +54,7 @@ urlpatterns = [
 
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
-    url(r'^robots\.txt$', include('robots.urls')),
+    #url(r'^robots\.txt$', include('robots.urls')),
 
     #  funny projects
     url(r'^gym/$', view=GymPage.as_view(), name='gym_page'),

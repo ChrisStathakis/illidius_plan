@@ -20,13 +20,18 @@ from django.views.decorators.cache import cache_page, cache_control
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
 
+def my_cookie_law(request):
+    get_cookie = request.COOKIES.get('cookie_law', None)
+    return True if get_cookie else False
 
-def homepage_initial_data():
+
+def homepage_initial_data(request):
     page_info = get_object_or_404(WelcomePage, id=WELCOME_PAGE_ID)
     about = get_object_or_404(AboutMe, id=ABOUT_ID)
     blog = Post.my_query.return_last_posts()
     projects = Projects.my_query.active()
-    return [page_info, about, blog, projects]
+    get_cookie = request.COOKIES.get('cookie_law', None)
+    return [page_info, about, blog, projects, get_cookie]
 
 
 def about_initial_data():
@@ -42,7 +47,7 @@ class Homepage(View):
     template_name = 'timer/index.html'
 
     def get(self, request):
-        page_info, about, services, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         form = self.form_class
         context = locals()
         return render(request, self.template_name, context)
@@ -61,7 +66,7 @@ class HomePageEng(View):
 
     def get(self, request):
         form = self.form_class
-        page_info, about, blog, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         context = locals()
         context.update(csrf(request))
         return render(request, self.template_name, context)
@@ -82,7 +87,7 @@ class About(View):
     template_name = 'timer/about.html'
     
     def get(self, request):
-        page_info, about, services, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         about_page_info, about_messages, about_techo, projects = about_initial_data()
         context = locals()
         return render_to_response(self.template_name, context)
@@ -101,7 +106,7 @@ class AboutEng(View):
     template_name = 'english/about.html'
 
     def get(self, request):
-        page_info, about, blog, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         about_page_info, about_messages, about_techo, projects = about_initial_data()
         context = locals()
         return render_to_response(self.template_name, context)
@@ -235,7 +240,7 @@ class ContactPage(SuccessMessageMixin, CreateView):
     success_url = '/contact'
 
     def get_context_data(self, **kwargs):
-        page_info, about, services, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         context = locals()
         context.update(super(ContactPage, self).get_context_data())
         return context
@@ -260,7 +265,7 @@ class ProjectPage(DetailView):
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
-        page_info, about, services, projects = homepage_initial_data()
+        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
         context = super(ProjectPage, self).get_context_data(**kwargs)
         context['images'] = ImageProject.my_query.post_related_and_active(post=self.object)
         context['page_info'] = page_info
