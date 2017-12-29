@@ -32,6 +32,7 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^my-ccokie-law/$', view=my_cookie_law, name='my_cookie_law'),
     url(r'^gr/$', Homepage.as_view(), name='homepage'),
     url(r'^gr/about/$', About.as_view(), name='about'),
     url(r'^gr/service/$', Service.as_view(), name='service'),

@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404, redirect, HttpResponseRedirect
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect, HttpResponseRedirect, HttpResponse
 from django.views.generic import View, FormView, CreateView, DetailView, ListView, RedirectView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -20,9 +20,11 @@ from django.views.decorators.cache import cache_page, cache_control
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
 
+
 def my_cookie_law(request):
-    get_cookie = request.COOKIES.get('cookie_law', None)
-    return True if get_cookie else False
+    response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    response.set_cookie('cookie_law', True)
+    return response
 
 
 def homepage_initial_data(request):
@@ -265,7 +267,7 @@ class ProjectPage(DetailView):
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
-        page_info, about, services, projects, cookie_law = homepage_initial_data(request)
+        page_info, about, services, projects, cookie_law = homepage_initial_data(self.request)
         context = super(ProjectPage, self).get_context_data(**kwargs)
         context['images'] = ImageProject.my_query.post_related_and_active(post=self.object)
         context['page_info'] = page_info

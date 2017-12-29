@@ -1,8 +1,7 @@
 <!DOCTYPE html>{% load staticfiles %}
 <html class="no-js">
-    <head>
-
-        <!-- Basic Page Needs
+<head>
+    <!-- Basic Page Needs
         ================================================== -->
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -120,16 +119,17 @@
         {% block additional_js %}
 
         {% endblock %}
-    </head>
-    <body>
-        <script>(function(d, s, id) {
+</head>
+<body>
+<script>
+    (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/el_GR/sdk.js#xfbml=1&version=v2.9&appId=399000140475673";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-        </script>
+</script>
         <!--
         ==================================================
         Header Section Start
@@ -169,13 +169,14 @@
                 <!-- /main nav -->
             </div>
         </header>
-        {% block content %}
+{% block content %}
+
         <!--
         ==================================================
         Slider Section Start
         ================================================== -->
-        <section id="hero-area" >
-            <div class="container">
+    <section id="hero-area" >
+                {% include 'include_cookie.html' %}
                 <div class="row">
                     <div class="col-md-12 text-center">
                     {% if messages %}
@@ -213,67 +214,19 @@
                 </div>
             </section><!--/#main-slider-->
 
-            <section id="feature">
-                <div class="container">
-
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Blog</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".5s">
-                            Discover my latest posts
-                        </p>
-                    </div>
-                    <div class="row">
-                        {% for post in blog %}
-                        <div class="col-md-4 col-lg-4 col-xs-12">
-                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                                <div class="media-left">
-                                    <div class="icon">
-                                        <img class="img-responsive" src="{{ post.file.url }}">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="{% url 'blog_page_eng' post.slug %}">{{ post.title_eng }}</a></h4>
-                                    <p>{{ post.content_eng|safe|truncatechars_html:20 }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </section> <!-- /#feature -->
-            <section id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
-                                <h2>
-                                    {{ about.title_eng }}
-                                </h2>
-                                <p>{{ about.text_eng|safe }}</p>
-                                <a class="btn-lines dark light wow fadeInUp animated  btn btn-default btn-green" data-wow-delay=".9s" href="{% url 'about' %}">Continue</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
-                                <img src="{% static 'images/my_images/personal.jpg' %}" alt="{{ page_info.title_eng }}" title="{{ page_info.title_eng }}">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section> <!-- /#about -->
-            <section id="works" class="works">
-                <div class="container">
-                    <div class="section-heading">
-                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
-                        <p class="wow fadeInDown" data-wow-delay=".5s">
-                            See and explore my lastest works!
-                        </p>
-                    </div>
-                    {% for project in projects %}
+    <section id="works" class="works">
+        <div class="container">
+            {% include 'include_cookie.html' %}
+            <div class="section-heading">
+                <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
+                <p class="wow fadeInDown" data-wow-delay=".5s">
+                    See and explore my latest works!
+                </p>
+            </div>
+            {% for project in projects %}
                     <div class="row">
                         <div class="col-sm-4 col-xs-12">
-                            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                            <figure style="height: 400px" class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                                 <div class="img-wrapper">
                                     <img src="{{ project.image.url }}" class="img-responsive" alt="{{ project.title }}" >
                                     <div class="overlay">
@@ -299,7 +252,58 @@
                     </div>
                 </div>
             </section> <!-- #works -->
-            <section id="call-to-action">
+
+    <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                                <h2>
+                                    {{ about.title_eng }}
+                                </h2>
+                                <p>{{ about.text_eng|safe }}</p>
+                                <a class="btn-lines dark light wow fadeInUp animated  btn btn-default btn-green" data-wow-delay=".9s" href="{% url 'about' %}">Continue</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
+                                <img src="{% static 'images/my_images/personal.jpg' %}" alt="{{ page_info.title_eng }}" title="{{ page_info.title_eng }}">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section> <!-- /#about -->
+
+    <section id="feature">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s">Blog</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s">
+                            Discover my latest posts
+                        </p>
+                    </div>
+                    <div class="row">
+                        {% for post in blog %}
+                        <div class="col-md-4 col-lg-4 col-xs-12">
+                            <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="media-left">
+                                    <div class="icon">
+                                        <img class="img-responsive" src="{{ post.file.url }}">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="{% url 'blog_page_eng' post.slug %}">{{ post.title_eng }}</a></h4>
+                                    <p>{{ post.content_eng|safe|truncatechars_html:20 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section> <!-- /#feature -->
+
+    <section id="call-to-action">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3"></div>

@@ -28,3 +28,4 @@ django-mptt
 mailchimp==2.0.9
 django-tinymce==2.6.0
 django-cookie-law
+django-classy-tags
