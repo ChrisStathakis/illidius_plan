@@ -1,5 +1,4 @@
-{% extends 'english/index.html' %}
-{% load staticfiles %}
+{% extends 'english/index.html' %} {% load staticfiles %}
 
 {% block seo %} {% endblock %}
 {% block my_static %}
@@ -9,7 +8,43 @@
 {% endblock %}
 
 {% block content %}
-    <div id="short-banner" class="global-page-header">
+
+    <section id="hero-area" >
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="block wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Slider -->
+                    <section class="cd-intro">
+                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+                            <span>A blog about </span><br>
+                            <span class="cd-words-wrapper">
+                                <b class="is-visible">Django</b>
+                                <b>Python tips</b>
+                                <b>Html CSS</b>
+                                <b>Javascript</b>
+                            </span>
+                        </h1>
+                    </section> <!-- cd-intro -->
+                                <!-- /.slider -->
+                            <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
+                                    In a sea of ordinary, make sure your website is set apart from the competition.
+                            </h2>
+                            <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="#works" data-section="#works" >View Works</a>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <section id="works" class="works">
+        <div class="container-fluid">
+
+            <div class="section-heading">
+                    <h1 class="title wow fadeInDown" data-wow-delay=".3s">Latest Works</h1>
+                    <p class="wow fadeInDown" data-wow-delay=".5s">
+                        See and explore my latest works!
+                    </p>
+                </div>
+                <div id="short-banner" class="global-page-header">
         <form method="post" id="banner-form" class="form-inline">{% csrf_token %}
             <div class="form-group">
                 {% for field in form %}
@@ -44,6 +79,10 @@
             {% endfor %}
         {% endif %}
     </div>
+            </div>
+        </section>
+
+
 {% endblock %}
 
 {% block additional_js %}

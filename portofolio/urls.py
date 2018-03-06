@@ -33,23 +33,14 @@ sitemaps = {
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^my-ccokie-law/$', view=my_cookie_law, name='my_cookie_law'),
-    url(r'^gr/$', Homepage.as_view(), name='homepage'),
-    url(r'^gr/about/$', About.as_view(), name='about'),
-    url(r'^gr/service/$', Service.as_view(), name='service'),
-    url(r'^gr/works/$', Works.as_view(), name='gallery'),
-    url(r'^gr/blog/$', cache_page(60*2)(BlogPage.as_view()), name='blog'),
-    url(r'^gr/blog/(?P<slug>[-\w]+)/$', cache_page(60*2)(PostPage.as_view()), name='blog_page'),
-    url(r'^gr/contact/$', ContactPage.as_view(), name='contact'),
-    url(r'^gr/project/(?P<slug>[-\w]+)/$', ProjectPage.as_view(), name='project_page'),
+ 
 
     #english
     url(r'^$', HomePageEng.as_view(), name='homepage_eng'),
     url(r'^about/$', AboutEng.as_view(), name='about_eng'),
-    url(r'^service/$', ServiceEng.as_view(), name='service_eng'),
-    url(r'^works/$', WorksEng.as_view(), name='gallery_eng'),
+    url(r'^projects/$', WorksEng.as_view(), name='gallery_eng'),
     url(r'^blog/$', BlogPageEng.as_view(), name='blog_eng'),
     url(r'^blog/(?P<slug>[-\w]+)/$', PostPageEng.as_view(), name='blog_page_eng'),
-    url(r'^contact/$', ContactPageEng.as_view(), name='contact_eng'),
     url(r'^project/(?P<slug>[-\w]+)/$', ProjectPageEng.as_view(), name='project_page_eng'),
     url(r'^subscribe/$', view=subscribe, name='subscribe'),
 

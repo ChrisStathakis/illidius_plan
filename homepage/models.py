@@ -41,7 +41,7 @@ class MainBanner(models.Model):
     title_eng = models.CharField(max_length=100)
     alt_eng = models.CharField(max_length=100)
     image = models.ImageField(upload_to=banner_upload)
-    page_related = models.ForeignKey(WelcomePage, null=True)
+    page_related = models.ForeignKey(WelcomePage, null=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = 'Main Banner - Using static files atm for that'
@@ -62,7 +62,7 @@ class AboutMe(models.Model):
     text = models.TextField(blank=True)
     title_eng = models.CharField(max_length=50, default='default')
     text_eng = models.TextField(blank=True)
-    page_related = models.ForeignKey(WelcomePage, null=True)
+    page_related = models.ForeignKey(WelcomePage, null=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = '2. About Me Info'
@@ -74,13 +74,14 @@ class AboutMe(models.Model):
 class AboutMeBar(models.Model):
     title = models.CharField(max_length=100)
     percent = models.IntegerField(default=50)
-    page_related = models.ForeignKey(WelcomePage, null=True)
+    page_related = models.ForeignKey(WelcomePage, null=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = 'About Programming Skill Bar - No use atm'
 
     def __str__(self):
         return self.title
+
 
 class Services(models.Model):
     icon = models.CharField(max_length=100, null=True, help_text='Here you use bootstrap icons, you can find them here. http://bootstrapmaster.com/live/one/icons_set2.html')
@@ -90,13 +91,15 @@ class Services(models.Model):
     text_eng = models.TextField(max_length=400)
     order = models.IntegerField(default=1)
     active = models.BooleanField(default=True)
-    page_related = models.ForeignKey(WelcomePage, null=True)
+    page_related = models.ForeignKey(WelcomePage, null=True, on_delete=models.CASCADE)
+
     class Meta:
         ordering = ['order']
         verbose_name_plural = '3. Services'
 
     def __str__(self):
         return self.title
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
@@ -132,7 +135,7 @@ class AboutMessages(models.Model):
     title_eng = models.CharField(max_length=50)
     text_eng = models.TextField()
     delay = models.CharField(default='.3s', max_length=5)
-    page_related = models.ForeignKey(AboutPage)
+    page_related = models.ForeignKey(AboutPage, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = '5. Διαχείριση About Μυνημάτων'
@@ -148,7 +151,7 @@ class AboutTecho(models.Model):
     text = models.TextField()
     title_eng = models.CharField(max_length=50)
     text_eng = models.TextField()
-    page_related = models.ForeignKey(AboutPage)
+    page_related = models.ForeignKey(AboutPage, on_delete=models.CASCADE)
     delay = models.CharField(max_length=5, default='.3s')
 
     class Meta:
@@ -162,7 +165,7 @@ class AboutClients(models.Model):
     active = models.BooleanField(default=True)
     image = models.ImageField()
     title = models.CharField(max_length=50)
-    page_related = models.ForeignKey(AboutPage)
+    page_related = models.ForeignKey(AboutPage, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = '7. Διαχείριση About Πελάτες'

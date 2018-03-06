@@ -28,12 +28,24 @@ DEBUG = False
 
 #ADMINS = [('christos', 'christosstath10@gmail.com')]
 
-
+'''
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+         'TIMEOUT': 60*15,
+        'OPTIONS': {
+            'MAX_ENTRIES': 200
+        }
+    }
+}
+'''
 
 ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', ]
 # Application definition
@@ -64,13 +76,13 @@ INSTALLED_APPS = [
 
 ]
 SITE_ID = 1
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    #  'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'django.middleware.cache.UpdateCacheMiddleware',
@@ -104,18 +116,8 @@ WSGI_APPLICATION = 'portofolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-'''
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
-         'TIMEOUT': 60*15,
-        'OPTIONS': {
-            'MAX_ENTRIES': 200
-        }
-    }
-}
-'''
+
+
 
 '''
 DATABASES = {

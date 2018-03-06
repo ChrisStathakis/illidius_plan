@@ -30,9 +30,13 @@ class ProjectsManager(models.Manager):
     def demo_sites(self):
         return super(ProjectsManager, self).filter(active= True, demo=True)
 
+    def first_page(self):
+        return self.active().filter(show_first_page=True)
+
 
 class Projects(models.Model):
     active = models.BooleanField(default=True)
+    show_first_page = models.BooleanField(default=True)
     active_eng = models.BooleanField(default=True)
     title = models.CharField(max_length=255,)
     short_description = models.CharField(max_length=255, help_text='The text appears on homepage')
@@ -46,7 +50,7 @@ class Projects(models.Model):
     seo_description_eng = models.CharField(max_length=255, blank=True, null=True, default='Insert Text')
     seo_keywords_eng = models.CharField(max_length=255, blank=True, null=True, default='Insert Text')
     image = models.ImageField()
-    category = models.ForeignKey(ProjectCategory)
+    category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
     day_added = models.DateField(auto_now_add=True)
     href = models.CharField(max_length=255, blank=True, null=True)
     github = models.URLField(blank=True, null=True)
@@ -72,7 +76,7 @@ class ImageProject(models.Model):
     alt = models.CharField(max_length=60, null=True, blank=True)
     image = models.ImageField(validators=[validate_image, ])
     text = models.TextField(blank=True, null=True, verbose_name='Optional description.')
-    project_related = models.ForeignKey(Projects)
+    project_related = models.ForeignKey(Projects, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
     objects = models.Manager()
     my_query = ImageProductManager()

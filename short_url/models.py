@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
@@ -11,6 +11,7 @@ from .validators import validate_min_length
 class ShortURLManager(models.Manager):
     def active(self):
         return super(ShortURLManager, self).filter(active=True)
+
 
 class ShortingURL(models.Model):
     url = models.URLField()
@@ -53,7 +54,6 @@ def update_shortcode(sender, instance, **kwargs):
 pre_save.connect(update_shortcode, sender=ShortingURL)
 
 
-
 class ShortUrlAnalyticsManager(models.Manager):
     def create_event(self, shortInstance):
         if isinstance(shortInstance, ShortingURL):
@@ -65,7 +65,7 @@ class ShortUrlAnalyticsManager(models.Manager):
 
 
 class ShortUrlAnalytics(models.Model):
-    short_url = models.OneToOneField(ShortingURL)
+    short_url = models.OneToOneField(ShortingURL, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

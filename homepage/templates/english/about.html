@@ -1,16 +1,13 @@
-{% extends 'english/index.html' %}
-{% load staticfiles %}
+{% extends 'english/index.html' %} {%load static %}
+
 {% block seo %}
-    <title>{{ page_info.title_eng }} | {{ about_page_info.title_eng }} </title>
+    <title>simply-chris | About </title>
     <meta name="description" content="{{ page_info.seo_description_eng }}, {{ about.description_eng }}">
     <meta name="keywords" content="{{ page_info.seo_keywords_eng }}, {{ about.keywords_eng }}">
 {% endblock %}
 
 {% block content %}
-        <!-- 
-        ================================================== 
-            Global Page Section Start
-        ================================================== -->
+
         <section class="global-page-header">
             <div class="container">
                 <div class="row">
@@ -32,10 +29,7 @@
             </div>
         </section>
 
-        <!-- 
-        ================================================== 
-            Company Description Section Start
-        ================================================== -->
+  
         <section class="company-description">
             <div class="container">
                 <div class="row">
@@ -51,11 +45,7 @@
             </div>
         </section>
 
-
-        <!-- 
-        ================================================== 
-            Company Feature Section Start
-        ================================================== -->
+        
         <section class="about-feature clearfix">
             <div class="container-fluid">
                 <div class="row">
@@ -73,38 +63,114 @@
             </div>
         </section>
 
-        <!-- 
-        ================================================== 
-            Team Section Start
-        ================================================== -->
+
         <section id="team">
             <div class="container">
                 <div class="row">
-                    <h2 class="subtitle text-center">Technologies</h2>
-                    {% for techo in about_techo %}
-                        <div class="col-md-3">
-                            <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
-                                <div class="team-img">
-                                    <img width="300px" height="200px" src="{{ techo.image.url }}" class="team-pic" alt="{{ techo.title_eng }}">
-                                </div>
-                                <h3 class="team_name">{{ techo.title_eng }}</h3>
-                                <p class="team_designation">{{ techo.text_eng|safe }}</p>
-                                <p class="team_text"></p>
+                    <h2 class="subtitle text-center">Demo Projects</h2>
+                    <div class="col-md-3">
+                        <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
+                            <div class="team-img">
+                                <img width="300px" height="200px" src="{% static 'images/my_images/short_url.jpg' %}" class="team-pic" alt="{{ techo.title_eng }}">
                             </div>
+                            <a href="{% url 'gym_page' %}"><h3 class="team_name">Gym App</h3></a>
+                            <p class="team_designation">A demo app for creating data for the program 5-3-1 reps</p>
+                            <p class="team_text"></p>
                         </div>
-                    {% endfor %}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="team-member wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="{{ techo.delay }}">
+                            <div class="team-img">
+                                <img width="300px" height="200px" src="{% static 'images/my_images/short_url.jpg' %}" class="team-pic" alt="{{ techo.title_eng }}">
+                            </div>
+                            <a href="{% url 'shorting_url' %}"><h3 class="team_name">Shorting Url</h3></a>
+                            <p class="team_designation">A demo app for shortin url with costum parameters</p>
+                            <p class="team_text"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <!--
-        ==================================================
-        Clients Section Start
-        ================================================== -->
+        
+
+        <section id="contact-section">
+            <div class="container">
+                <div class="row">
+                    <h2 class="subtitle text-center">Informations</h2>
+                    <div class="col-md-6">
+                        <div class="block">
+                            <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Contact With Me</h2>
+                            <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
+                                Feel free to ask anything!
+                            </p>
+                            <div class="contact-form">
+                                <form id="contact-form" method="post"  role="form">{% csrf_token %}
+                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                        <input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
+                                    </div>
+                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                        <input type="email" placeholder="Your Email" class="form-control" name="email" id="email" >
+                                    </div>
+                                    
+                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
+                                        <input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
+                                    </div>
+                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
+                                        <textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>    
+                                    </div>
+                                    <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
+                                        <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Send Message">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="map-area">
+                            <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Find Us</h2>
+                            <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
+                                My name is Christos Stathakis and i am living in Greece.
+                            </p>
+                            <div class="map">
+                                <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=molaoi%2C%20GR&t=&z=12&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>embed google map <a href="http://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{overflow:hidden;height:500px;width:600px;}.gmap_canvas {background:none!important;height:500px;width:600px;}</style></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row address-details">
+                    <div class="col-md-3">
+                        <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
+                            <i class="ion-ios-location-outline"></i>
+                            <h5>Asopos Monemvasias <br>Greece, 23056</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
+                            <i class="ion-ios-location-outline"></i>
+                            <h5>Pandoras 4-6 Galatsi <br>Athens,600562</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
+                            <i class="ion-ios-email-outline"></i>
+                            <p>christosstath10@gmail.com<br>lirageika@hotmail.gr</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
+                            <i class="ion-ios-telephone-outline"></i>
+                            <p>+6944899458<br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="clients">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Lastest Projects</h2>
+                        <h2 class="subtitle text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Another Contact Informations</h2>
                         <p class="subtitle-des text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">Some demo websites made for fun</p>
                         <div id="clients-logo" class="owl-carousel">
                             {% for project in projects %}
@@ -131,7 +197,7 @@
                             <div class="block">
                                 <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>
                                 <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">You wanna hear my suggestions? <br>You want a different website that the other use?</p>
-                                <a href="{% url 'contact_eng' %}" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                                <a href="" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
                             </div>
                         </div>
 

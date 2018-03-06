@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 from mptt.models import MPTTModel, TreeForeignKey
@@ -42,7 +42,7 @@ class PostCategory(MPTTModel):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(blank=True, null=True, allow_unicode=True)
     content = models.CharField(max_length=150, null=True, blank=True)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True, on_delete=models.CASCADE)
 
     class MTTPMeta:
         order_insertion_by = ['title']
@@ -73,11 +73,12 @@ class Post(models.Model):
     content_eng = HTMLField(verbose_name='Content in eng', help_text='Use Html!!!', blank=True, null=True)
     keywords_eng = models.CharField(max_length=100, blank=True, null=True)
     description_eng = models.CharField(max_length=100, blank=True, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='user')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='user', on_delete=models.CASCADE)
     publish = models.DateField(auto_now=True, auto_now_add=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    slug = models.SlugField(unique=True,null=True, blank=True, allow_unicode=True, verbose_name='Slug - Dont bother with that ')
-    category = models.ForeignKey(PostCategory, null=True)
+    slug = models.SlugField(unique=True,null=True, blank=True, allow_unicode=True,
+                            verbose_name='Slug - Dont bother with that ')
+    category = models.ForeignKey(PostCategory, null=True, on_delete=models.CASCADE)
     file = models.ImageField(verbose_name='Image', help_text='1332*550')
     update = models.BooleanField(default=False)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')

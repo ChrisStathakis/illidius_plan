@@ -24,6 +24,17 @@ class GymPage(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(GymPage, self).get_context_data(**kwargs)
+        get_deadlift = self.request.GET.get('deadlift', None)
+        get_squat = self.request.GET.get('squats', None)
+        get_bench = self.request.GET.get('bench', None)
+        get_press = self.request.GET.get('press', None)
+
+        deadlift = program(get_deadlift) if get_deadlift else []
+        squats = program(get_squat) if get_squat else []
+        shoulder_press = program(get_press) if get_press else []
+        bench_press = program(get_bench) if get_bench else []
+        print(deadlift, squats, shoulder_press, bench_press)
+        context.update(locals())
         return context
 
 
