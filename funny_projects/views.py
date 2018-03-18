@@ -33,7 +33,6 @@ class GymPage(ListView):
         squats = program(get_squat) if get_squat else []
         shoulder_press = program(get_press) if get_press else []
         bench_press = program(get_bench) if get_bench else []
-        print(deadlift, squats, shoulder_press, bench_press)
         context.update(locals())
         return context
 
