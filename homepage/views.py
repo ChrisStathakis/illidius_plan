@@ -20,10 +20,13 @@ from django.views.decorators.cache import cache_page, cache_control
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
 
+def check_cookie(request):
+    europe_cookie = request.COOKIES.get('cookie_law_europe', None)
+    return europe_cookie
 
 def my_cookie_law(request):
     response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    response.set_cookie('cookie_law', True)
+    response.set_cookie('cookie_law_europe', True)
     return response
 
 
@@ -33,6 +36,7 @@ class HomePageEng(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageEng, self).get_context_data(**kwargs)
+        europe_cookie = check_cookie(self.request)
         projects, posts = Projects.my_query.first_page()[:6], Post.objects.filter(active=True)[:3]
         form = self.form_class
         context.update(locals())

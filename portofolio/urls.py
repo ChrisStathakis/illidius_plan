@@ -32,7 +32,7 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^my-ccokie-law/$', view=my_cookie_law, name='my_cookie_law'),
+    url(r'^my-cookie-law/$', view=my_cookie_law, name='my_cookie_law'),
  
 
     #english
