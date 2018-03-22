@@ -21,8 +21,8 @@ class ProjectAdmin(admin.ModelAdmin):
         }),
         ('Page Info', {
             'fields': (('image', 'category'),
-                      'href'
-                      )
+                       ('href', 'github'),
+                       )
         }),
         ('Seo', {'classes': ('collapse',),
                  'fields': ('slug', ),

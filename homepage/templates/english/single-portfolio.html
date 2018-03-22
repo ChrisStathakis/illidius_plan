@@ -1,66 +1,70 @@
 {% extends 'english/index.html' %}
 {% block seo %}
-    <title>{{ page_info.title }} | {{ object }}</title>
-    <meta name="description" content="{{ page_info.seo_description }}">
-    <meta name="keywords" content="{{ page_info.seo_keywords }}">
+    <title>simply-chris | {{ object.title_eng }}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 {% endblock %}
 
 {% block content %}
-
-        <!--
-        ==================================================
-        Global Page Section Start
-        ================================================== -->
-        <section class="global-page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="block">
-                            <h2>Works</h2>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <a href="{% url 'homepage_eng' %}">
-                                        <i class="ion-ios-home"></i>
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'gallery_eng' %}">
-                                        <i class="ion-ios-home"></i>
-                                        Projects
-                                    </a>
-                                </li>
-                                <li class="active">Projects</li>
-                            </ol>
-                        </div>
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2>Project title: {{ object.title_eng }}</h2>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="{% url 'homepage_eng' %}">
+                                    <i class="ion-ios-home"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'gallery_eng' %}">
+                                    <i class="ion-ios-home"></i>
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="active">{{ object.title_eng }}</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-            </section><!--/#Page header-->
-            <section class="portfolio-single">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="portfolio-single-img">
-                                <img class="img-responsive" alt="" src="{{ projects.image.url }}">
-                            </div>
-                            <div class="block">
-                                <h2>{{ projects.title_eng }}</h2>
-                                <div class="portfolio-meta">
-                                   <span>{{ projects.day_added }}</span>|
-                                   <span> Category:  {{ projects.category_eng }}</span>|
-                                   <span> website: <a target="_blank" href="http://{{ projects.href }}">{{ projects.href }}</a></span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                               {{ projects.description_eng|safe }}
-                            </div>
-                             <a href="{{ projects.href }}" class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> See the Site</a>
-                             <a href="{{ projects.github }}" class="btn btn-block btn-social btn-twitter"><span class="fa fa-twitter"></span> See the code on github</a>
+        </div>
+    </section>
+
+    <section class="portfolio-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio-single-img">
+                        <img class="img-responsive" alt="" src="{{ object.image.url }}">
+                    </div>
+                    <br><br>
+                    <div class="block">
+                        <h2 class="text-center">{{ projects.title_eng }}</h2>
+                        <div class="portfolio-meta">
+                            <span>{{ object.day_added }}</span>|
+                            <span> Category:  {{ object.category.title_eng }}</span>|
+                            <span> website: <a style="color:black;" target="_blank" href="{{ object.href }}">{{ object.href }}</a></span>
                         </div>
                     </div>
+                    <div class="portfolio-content">
+                        {{ projects.description_eng|safe }}
+                    </div>
+
                 </div>
-            </section>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <a style="width: 200px;" target="_blank" href="{{ projects.href }}" class="btn btn-info"> See the Site</a>
+                    <a style="width: 200px;float: right;" target="_blank" href="{{ projects.github }}" class="btn btn-info">
+                        See the code on github
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
             <section class="works works-fit">
             <div class="container">
                 <h2 class="subtitle">See more</h2>

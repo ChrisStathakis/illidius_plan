@@ -1,39 +1,36 @@
-{% extends 'english/index.html' %}
-{% load staticfiles %}
+{% extends 'english/index.html' %} {% load staticfiles %}
 {% block seo %}
-    <title xmlns="http://www.w3.org/1999/html">{{ page_info.title_eng }} - Blog</title>
+    <title xmlns="http://www.w3.org/1999/html">{{ page_info.title_eng }} | Blog</title>
     <meta name="description" content="A blog by Christos Stathakis about  Web developing, updates....">
     <meta name="keywords" content="Blog, python, django, Web developing, ">
     <meta name="author" content="">
 {% endblock %}
 
 {% block content %}
-        ==================================================
-        Global Page Section Start
-        ================================================== -->
-        <section class="global-page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="block">
-                            <h2>Blog</h2>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <a href="{% url 'homepage_eng' %}">
-                                        <i class="ion-ios-home"></i>
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="active">Blog</li>
-                            </ol>
-                        </div>
+    <section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2>Blog</h2>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="{% url 'homepage_eng' %}">
+                                    <i class="ion-ios-home"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="active">Blog</li>
+                        </ol>
                     </div>
                 </div>
             </div>
-            </section><!--/#Page header-->
-            <section id="blog-full-width">
-                <div class="container">
-                    <div class="row">
+        </div>
+    </section>
+
+    <section id="blog-full-width">
+        <div class="container">
+            <div class="row">
                         <div class="col-md-4">
                             <div class="sidebar">
                             <form action="" method="get" class="searchform" role="search">

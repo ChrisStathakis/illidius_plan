@@ -20,9 +20,11 @@ from django.views.decorators.cache import cache_page, cache_control
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
 
+
 def check_cookie(request):
     europe_cookie = request.COOKIES.get('cookie_law_europe', None)
     return europe_cookie
+
 
 def my_cookie_law(request):
     response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -115,10 +117,10 @@ class PostPageEng(DetailView):
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
-        object = self.object
-        page_info = WelcomePage.objects.get(id=WELCOME_PAGE_ID)
+
+        context = super(PostPageEng, self).get_context_data(**kwargs)
         post_tag = PostTags.objects.all()
-        context = locals()
+        context.update(locals())
         return context
 
 
@@ -129,7 +131,8 @@ class ProjectPageEng(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectPageEng, self).get_context_data(**kwargs)
-        context['images'] = ImageProject.my_query.post_related_and_active(post=self.object)
+        images = ImageProject.my_query.post_related_and_active(post=self.object)
+        context.update(locals())
         return context
 
 
@@ -248,6 +251,7 @@ class ProjectPage(DetailView):
         return context
 
 '''
+
 
 class PostLike(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
