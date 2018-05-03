@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'blog',
     'short_url',
     'funny_projects',
+    'backgammon',
 
     #third party
     'rest_framework',
