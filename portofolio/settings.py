@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'short_url',
     'funny_projects',
     'backgammon',
+    'contact',
 
     #third party
     'rest_framework',

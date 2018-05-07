@@ -8,7 +8,7 @@ from .forms import *
 
 
 class ShortHomepage(View):
-    template = 'short_url/index.html'
+    template = 'tim/shorting_url.html'
 
     def get(self, request, *args, **kwargs):
         # ShortingURL.objects.all().delete()

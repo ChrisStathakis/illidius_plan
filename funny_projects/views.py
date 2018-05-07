@@ -20,7 +20,7 @@ def program(exercise):
 
 class GymPage(ListView):
     model = GymPerson
-    template_name = 'gym/index.html'
+    template_name = 'tim/gym_app.html'
 
     def get_context_data(self, **kwargs):
         context = super(GymPage, self).get_context_data(**kwargs)
@@ -51,7 +51,7 @@ def gym_person_page(request, dk):
     bench_press = program(person.bench_press)
     context = locals()
     context.update(csrf(request))
-    return render(request, 'gym/gym_person_page.html', context)
+    return render(request, 'tim/gym_detail.html', context)
 
 
 class CostManager(View):

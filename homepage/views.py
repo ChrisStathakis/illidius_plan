@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, get_object_or_404, redirect, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, reverse, get_object_or_404, redirect, HttpResponseRedirect, HttpResponse
 from django.views.generic import View, FormView, CreateView, DetailView, ListView, RedirectView, TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -12,6 +12,7 @@ from blog.models import Post, PostCategory, PostTags, Gallery
 from blog.forms import PhotoForm, GalleryForm
 from .forms import ContactForm
 from projects.models import Projects, ImageProject
+from contact.forms import ContactForm
 from django.views.decorators.cache import cache_page, cache_control
 
 
@@ -32,31 +33,29 @@ def my_cookie_law(request):
     return response
 
 
-class HomePageEng(TemplateView):
+class HomePageEng(FormView):
     form_class = JoinFormEng
-    template_name = 'english/index.html'
+    template_name = 'tim/index.html'
 
     def get_context_data(self, **kwargs):
         context = super(HomePageEng, self).get_context_data(**kwargs)
         europe_cookie = check_cookie(self.request)
         projects, posts = Projects.my_query.first_page()[:6], Post.objects.filter(active=True)[:3]
-        form = self.form_class
         context.update(locals())
         return context
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Thank you for the subscribe!')
-            return HttpResponseRedirect('/#call-to-action')
-        context = locals()
-        context.update(csrf(request))
-        return render(request, self.template_name, context)
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'Thank you for the subscribe!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('homepage_eng')
 
 
-class AboutEng(TemplateView):
-    template_name = 'english/about.html'
+class AboutEng(FormView):
+    template_name = 'tim/about.html'
+    form_class = ContactForm
 
     def get_context_data(self, **kwargs):
         context = super(AboutEng, self).get_context_data(**kwargs)
@@ -64,19 +63,23 @@ class AboutEng(TemplateView):
         context.update(locals())
         return context
 
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'We will contact you shortly!')
+        return super().form_valid(form)
 
-class WorksEng(ListView):
+    def get_success_url(self):
+        return reverse('about_eng')
+
+
+class WorksEng(ListView, FormView):
     model = Projects
-    template_name = 'english/gallery.html'
+    template_name = 'tim/projects.html'
     paginate_by = 6
+    form_class = JoinFormEng
 
     def get_queryset(self):
         queryset = Projects.my_query.active()
-        cate_name, tag_name, search_name = [self.request.GET.getlist('cate_name'), 
-                                           self.request.GET.getlist('tag_name'),
-                                           self.request.GET.get('search_name')
-                                           ]
-        queryset = queryset.filter()
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -85,21 +88,27 @@ class WorksEng(ListView):
         context.update(locals())
         return context
 
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'We will contact you shortly!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('gallery_eng')
+
 
 class BlogPageEng(ListView):
     model = Post
-    template_name = 'english/blog-left-sidebar.html'
+    template_name = 'tim/blog.html'
 
     def get_context_data(self, **kwargs):
-        page_info = WelcomePage.objects.get(id=WELCOME_PAGE_ID)
-        about_me = AboutMe.objects.get(id=ABOUT_ID)
+        context = super(BlogPageEng, self).get_context_data(**kwargs)
         post_categories = PostCategory.objects.all()
         updates = self.object_list.filter(update=True)
         post_tag = PostTags.objects.all()
-        posts = self.object_list
         search_text = self.request.GET.get('search_text')
         cate_name = self.request.GET.getlist('cat_name')
-        context = locals()
+        context.update(locals())
         return context
 
     def get_queryset(self):
@@ -108,12 +117,13 @@ class BlogPageEng(ListView):
         cate_name = self.request.GET.getlist('cat_name')
         queryset = queryset.filter(category__id__in=cate_name) if cate_name else queryset
         queryset = queryset.filter(Q(title_eng__icontains=search_text) | Q(category__title__icontains=search_text)).distinct() if search_text else queryset
+        queryset = queryset.order_by('-publish')
         return queryset
 
 
 class PostPageEng(DetailView):
     model = Post
-    template_name = 'english/single-post.html'
+    template_name = 'tim/blog_detail.html'
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
@@ -126,7 +136,7 @@ class PostPageEng(DetailView):
 
 class ProjectPageEng(DetailView):
     model = Projects
-    template_name = 'english/single-portfolio.html'
+    template_name = 'tim/project_detail.html'
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
