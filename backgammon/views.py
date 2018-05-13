@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 import datetime
 from .models import *
@@ -19,5 +19,5 @@ def homepage(request):
             form.save()
             return HttpResponseRedirect(reverse('backgammon:homepage'))
     context = locals()
-    return render(request, 'backgammon/index.html', context)
+    return render(request, 'tim/backgammon_home.html', context)
 
