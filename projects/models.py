@@ -70,6 +70,9 @@ class Projects(models.Model):
     def additional_images(self):
         return ImageProject.my_query.post_related(post=self)
 
+    def tag_demo(self):
+        return 'Demo Site' if self.demo else 'Site'
+
 
 class ImageProject(models.Model):
     title = models.CharField(max_length=60)

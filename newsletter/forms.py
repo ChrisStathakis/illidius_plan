@@ -5,6 +5,7 @@ from django.conf import settings
 
 
 class JoinForm(forms.ModelForm):
+    accept_ = forms.BooleanField(required=True)
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control',
                                                             'placeholder': 'Γράψτε το email σας',
                                                             })
@@ -12,7 +13,7 @@ class JoinForm(forms.ModelForm):
     
     class Meta:
         model = Join
-        fields = ['email']
+        fields = ['email', 'accept_']
 
     def clean(self):
         email = self.cleaned_data.get('email')

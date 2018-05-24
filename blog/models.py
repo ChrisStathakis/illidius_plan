@@ -74,7 +74,7 @@ class Post(models.Model):
     keywords_eng = models.CharField(max_length=100, blank=True, null=True)
     description_eng = models.CharField(max_length=100, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='user', on_delete=models.CASCADE)
-    publish = models.DateField(auto_now=True, auto_now_add=False)
+    publish = models.DateField(auto_now_add=True,)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     slug = models.SlugField(unique=True,null=True, blank=True, allow_unicode=True,
                             verbose_name='Slug - Dont bother with that ')
@@ -86,7 +86,7 @@ class Post(models.Model):
     objects = models.Manager()
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['publish', ]
 
     def __str__(self):
         return self.title
