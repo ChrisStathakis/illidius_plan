@@ -29,3 +29,4 @@ unicode-slugify==0.1.3
 python-decouple==3.0
 django-mptt==0.9.0
 mailchimp==2.0.9
+sendgrid==5.4.1

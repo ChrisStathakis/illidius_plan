@@ -15,6 +15,11 @@ from projects.models import Projects, ImageProject
 from contact.forms import ContactForm
 from django.views.decorators.cache import cache_page, cache_control
 
+from django.conf import settings
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -38,6 +43,7 @@ class HomePageEng(FormView):
     template_name = 'tim/index.html'
 
     def get_context_data(self, **kwargs):
+        print('ia, ')
         context = super(HomePageEng, self).get_context_data(**kwargs)
         europe_cookie = check_cookie(self.request)
         projects, posts = Projects.my_query.first_page()[:6], Post.objects.filter(active=True)[:3]
@@ -45,7 +51,9 @@ class HomePageEng(FormView):
         return context
 
     def form_valid(self, form):
+        print('is valid')
         form.save()
+        send_mail('Sendgrin test', 'its works.', 'lirageika@hotmail.gr', ['christosstath10@gmail.com'], fail_silently=False)
         messages.success(self.request, 'Thank you for the subscribe!')
         return super().form_valid(form)
 
