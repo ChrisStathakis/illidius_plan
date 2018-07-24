@@ -21,3 +21,7 @@ def homepage(request):
     context = locals()
     return render(request, 'tim/backgammon_home.html', context)
 
+
+def celebration(request):
+
+    return render(request, 'tim/back_cele.html')
