@@ -1,11 +1,6 @@
-from django.shortcuts import render, render_to_response,get_list_or_404, HttpResponseRedirect
-from .models import *
-from django.template.context_processors import csrf
-from django.contrib.contenttypes.models import ContentType
-# Create your views here.
-
 from django.contrib.sitemaps import Sitemap
 from blog.models import *
+
 
 class BlogSitemap(Sitemap):
     changefreq = "never"

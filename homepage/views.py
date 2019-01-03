@@ -43,7 +43,6 @@ class HomePageEng(FormView):
     template_name = 'tim/index.html'
 
     def get_context_data(self, **kwargs):
-        print('ia, ')
         context = super(HomePageEng, self).get_context_data(**kwargs)
         europe_cookie = check_cookie(self.request)
         projects, posts = Projects.my_query.first_page()[:6], Post.objects.filter(active=True)[:3]
