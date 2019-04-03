@@ -36,7 +36,7 @@ class ProjectsManager(models.Manager):
 
 class Projects(models.Model):
     active = models.BooleanField(default=True)
-    show_first_page = models.BooleanField(default=True)
+    show_first_page = models.BooleanField(default=False)
     active_eng = models.BooleanField(default=True)
     title = models.CharField(max_length=255,)
     short_description = models.CharField(max_length=255, help_text='The text appears on homepage')
