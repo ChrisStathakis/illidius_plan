@@ -7,9 +7,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = False
+DEBUG = True
 
-#ADMINS = [('christos', 'christosstath10@gmail.com')]
+
 
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
@@ -223,3 +223,6 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+ADMINS = [('christos', 'christosstath10@gmail.com')]
