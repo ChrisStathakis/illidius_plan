@@ -4,6 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
+from django.core.mail import send_mail
 from django.conf import settings
 from django.template.context_processors import csrf
 from .models import *
@@ -19,12 +20,13 @@ from django.conf import settings
 import sendgrid
 import os
 from sendgrid.helpers.mail import *
-from django.core.mail import send_mail
+
 
 # Create your views here.
 
 WELCOME_PAGE_ID = 1
 ABOUT_ID = 1
+recipient_list = settings.RECIPIEST_LIST
 
 
 def check_cookie(request):
@@ -66,13 +68,18 @@ class AboutEng(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutEng, self).get_context_data(**kwargs)
-
         context.update(locals())
         return context
 
     def form_valid(self, form):
         form.save()
         messages.success(self.request, 'We will contact you shortly!')
+        name = form.cleaned_data.get('name', 'Problem@email.com')
+        email = form.cleaned_data.get('email', 'Problem on email')
+        message = form.cleaned_data.get('message', 'Problem on message')
+        title = f'Name.. {name}, Email.. {email}'
+        body = f'Message \n {message}'
+        send_mail(title, body, email, recipient_list, fail_silently=False)
         return super().form_valid(form)
 
     def get_success_url(self):

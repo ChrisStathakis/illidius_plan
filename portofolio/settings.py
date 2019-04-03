@@ -9,8 +9,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = False
 
-
-
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -226,3 +224,4 @@ EMAIL_USE_TLS = True
 
 
 ADMINS = [('christos', 'christosstath10@gmail.com')]
+RECIPIEST_LIST = ['lirageika@hotmail.gr', 'christosstath10@gmail.com']
