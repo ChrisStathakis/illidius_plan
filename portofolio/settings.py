@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'funny_projects',
     'backgammon',
     'contact',
+    'sample_templates',
 
     #third party
     'rest_framework',
