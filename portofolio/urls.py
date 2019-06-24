@@ -11,9 +11,12 @@ from blog.views import *
 from short_url.views import *
 from funny_projects.views import *
 from sample_templates.views import TemplateListView
+from homepage.sitemaps import StaticViewSitemap, ProjectSitemap
+
 
 sitemaps = {
-    'blog': BlogSitemap,
+    'static': StaticViewSitemap,
+    'projects': ProjectSitemap
 }
 
 urlpatterns = [
@@ -21,7 +24,7 @@ urlpatterns = [
     url(r'^my-cookie-law/$', view=my_cookie_law, name='my_cookie_law'),
  
 
-    #english
+    #  english
     url(r'^$', HomePageEng.as_view(), name='homepage_eng'),
     url(r'^about/$', AboutEng.as_view(), name='about_eng'),
     url(r'^projects/$', WorksEng.as_view(), name='gallery_eng'),
@@ -31,8 +34,8 @@ urlpatterns = [
     url(r'^subscribe/$', view=subscribe, name='subscribe'),
 
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^sitemap\.xml',sitemap, {'sitemaps': sitemaps}),
-    #url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^sitemap.xml',sitemap, {'sitemaps': sitemaps}),
+    #  url(r'^robots\.txt$', include('robots.urls')),
 
     #  funny projects
     url(r'^gym/$', view=GymPage.as_view(), name='gym_page'),

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from .validators import validate_image
 from tinymce.models import HTMLField
 # Create your models here.
@@ -72,6 +73,9 @@ class Projects(models.Model):
 
     def tag_demo(self):
         return 'Demo Site' if self.demo else 'Site'
+
+    def get_absolute_url(self):
+        return reverse('project_page_eng', kwargs={'slug': self.slug})
 
 
 class ImageProject(models.Model):
