@@ -25,7 +25,29 @@
     <favorites_list name="portofolio" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homepage/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#109#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/homepage/templates/tim/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -80,7 +102,6 @@
         <option value="$PROJECT_DIR$/homepage/templates/tim/shorting_url.html" />
         <option value="$PROJECT_DIR$/homepage/templates/timer/index.html" />
         <option value="$PROJECT_DIR$/homepage/templates/tim/include/js.html" />
-        <option value="$PROJECT_DIR$/homepage/templates/tim/index.html" />
         <option value="$PROJECT_DIR$/contact/admin.py" />
         <option value="$PROJECT_DIR$/homepage/static/assets/css/material-kit.min.css" />
         <option value="$PROJECT_DIR$/homepage/templates/tim/include/third_parties.html" />
@@ -105,6 +126,7 @@
         <option value="$PROJECT_DIR$/homepage/sitemaps.py" />
         <option value="$PROJECT_DIR$/portofolio/urls.py" />
         <option value="$PROJECT_DIR$/projects/models.py" />
+        <option value="$PROJECT_DIR$/homepage/templates/tim/index.html" />
       </list>
     </option>
   </component>
@@ -121,7 +143,7 @@
       <path value="$PROJECT_DIR$/static/waypoints/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="955" />
     <option name="height" value="1047" />
@@ -329,8 +351,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.592511" weight="0.25826773" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31668437" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.102604166" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31668437" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.102604166" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -487,13 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/homepage/templates/tim/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -668,16 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/homepage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -733,6 +738,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homepage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homepage/templates/tim/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
         </state>
       </provider>
     </entry>
