@@ -38,11 +38,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homepage/templates/tim/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
               <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -121,12 +130,12 @@
         <option value="$PROJECT_DIR$/sample_templates/models.py" />
         <option value="$PROJECT_DIR$/sample_templates/admin.py" />
         <option value="$PROJECT_DIR$/sample_templates/templates/sample/list-view.html" />
-        <option value="$PROJECT_DIR$/portofolio/settings.py" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/homepage/sitemaps.py" />
         <option value="$PROJECT_DIR$/portofolio/urls.py" />
         <option value="$PROJECT_DIR$/projects/models.py" />
         <option value="$PROJECT_DIR$/homepage/templates/tim/index.html" />
+        <option value="$PROJECT_DIR$/portofolio/settings.py" />
       </list>
     </option>
   </component>
@@ -143,7 +152,7 @@
       <path value="$PROJECT_DIR$/static/waypoints/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="955" />
     <option name="height" value="1047" />
@@ -164,7 +173,7 @@
             <path>
               <item name="portofolio" type="b2602c69:ProjectViewProjectNode" />
               <item name="illidius-corner" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
+              <item name="portofolio" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -683,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/homepage/templates/tim/projects.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -755,6 +757,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portofolio/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
