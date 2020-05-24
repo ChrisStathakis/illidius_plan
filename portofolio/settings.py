@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = False
+DEBUG = True
 
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
@@ -118,7 +118,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config('NAME'),
-        'USER': 'rhdxdtqcvcdbqq',
+        'USER': 'mynkewykdxmhyz',
         'PASSWORD':config('PASSWORD'),
         'HOST':config('HOST'),
         'PORT':'5432',
