@@ -55,7 +55,8 @@ urlpatterns = [
     url(r'^s/(?P<slug>[-\w]+)/$', view=redirect_view, name='redirect_result'),
 
     #  sample templates
-    url(r'^sample-templates/$', TemplateListView.as_view(), name='sample-templates')
+    url(r'^sample-templates/$', TemplateListView.as_view(), name='sample-templates'),
+    path('showcase/', include('showcase.urls'))
 
     #url(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

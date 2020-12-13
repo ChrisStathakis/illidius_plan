@@ -8,6 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
+REAL_DB = True
 
 if not DEBUG:
     SESSION_COOKIE_SECURE = True
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'backgammon',
     'contact',
     'sample_templates',
+    'showcase',
 
     #third party
     'rest_framework',
@@ -102,29 +104,25 @@ WSGI_APPLICATION = 'portofolio.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 
+if REAL_DB:
 
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('NAME'),
+            'USER': 'mynkewykdxmhyz',
+            'PASSWORD':config('PASSWORD'),
+            'HOST':config('HOST'),
+            'PORT':'5432',
+        }
     }
-}
-'''
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('NAME'),
-        'USER': 'mynkewykdxmhyz',
-        'PASSWORD':config('PASSWORD'),
-        'HOST':config('HOST'),
-        'PORT':'5432',
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
