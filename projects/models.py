@@ -77,6 +77,8 @@ class Projects(models.Model):
     def get_absolute_url(self):
         return reverse('project_page_eng', kwargs={'slug': self.slug})
 
+    
+
 
 class ImageProject(models.Model):
     title = models.CharField(max_length=60)

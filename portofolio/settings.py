@@ -205,14 +205,7 @@ MAILCHIMP_SUBSCRIBE_LIST_ID = config('MAILCHIMP_SUBSCRIBE_LIST_ID')
 # max file size
 MAX_FILE_SIZE = 2*1024*1024
 
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-    'width': '100%',
-    'height': 600,
-}
+
 
 SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 
