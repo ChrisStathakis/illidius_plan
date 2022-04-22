@@ -59,12 +59,13 @@ INSTALLED_APPS = [
     'robots',
     'mptt',
     'tinymce',
-    'cookielaw',
+    
 
 ]
 SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -171,7 +172,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 '''
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AWS_REGION = 'eu-central-1'
@@ -189,7 +190,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     # refers directly to STATIC_URL. So it's safest to always set it.
     # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 
-from storages.backends.s3boto import S3BotoStorage
+
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MEDIAFILES_LOCATION = 'media'
