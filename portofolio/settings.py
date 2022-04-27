@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'contact',
     'sample_templates',
     'showcase',
+    'tickers',
 
     #third party
     'rest_framework',
@@ -59,6 +60,8 @@ INSTALLED_APPS = [
     'robots',
     'mptt',
     'tinymce',
+
+
     
 
 ]
