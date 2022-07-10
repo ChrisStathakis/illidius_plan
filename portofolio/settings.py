@@ -114,7 +114,7 @@ if REAL_DB:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': config('NAME'),
-            'USER': 'mynkewykdxmhyz',
+            'USER': config('USER'),
             'PASSWORD':config('PASSWORD'),
             'HOST':config('HOST'),
             'PORT':'5432',
