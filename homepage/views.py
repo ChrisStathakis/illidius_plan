@@ -157,6 +157,7 @@ class ProjectPageEng(DetailView):
         context = super(ProjectPageEng, self).get_context_data(**kwargs)
         images = ImageProject.my_query.post_related_and_active(post=self.object)
         context.update(locals())
+        print('here nab!')
         return context
 
 
