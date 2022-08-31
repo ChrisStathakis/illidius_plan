@@ -30,7 +30,7 @@ CACHES = {
 }
 '''
 
-ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', ]
+ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', 'urchin-app-oyzcr.ondigitalocean.app']
 # Application definition
 
 INSTALLED_APPS = [
