@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 
 from mptt.models import MPTTModel, TreeForeignKey
 from tinymce.models import HTMLField
+from import_export.admin import ImportExportActionModelAdmin, ImportExportModelAdmin
 # Create your models here.
 
 MEDIAURL = 'https://illidius-plan.s3.amazonaws.com/media'
@@ -38,7 +39,7 @@ class PostTags(models.Model):
         return self.title
 
 
-class PostCategory(MPTTModel):
+class PostCategory( MPTTModel):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(blank=True, null=True, allow_unicode=True)
     content = models.CharField(max_length=150, null=True, blank=True)

@@ -1,6 +1,8 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.core.exceptions import ValidationError
+from import_export.admin import ImportExportModelAdmin
+
 
 MAX_SIZE_FILE = 1024*1024/2
 MEDIA_URL = ''

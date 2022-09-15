@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Post, PostCategory, Gallery, PostTags
+
 from mptt.admin import DraggableMPTTAdmin
-# Register your models here.
+from import_export.admin import ImportExportModelAdmin
 
 
 @admin.register(Post)

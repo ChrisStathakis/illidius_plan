@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-# Register your models here.
+from import_export.admin import ImportExportModelAdmin
 
 
 def action_deactive_first_page(modeladmin, request, queryset):
@@ -45,7 +45,10 @@ class ImageProjectAdmin(admin.ModelAdmin):
         }),
     )
 
+@admin.register(ProjectCategory)
+class ProjectCategoyAdmin(ImportExportModelAdmin):
+    pass
 
 admin.site.register(Projects, ProjectAdmin)
 admin.site.register(ImageProject, ImageProjectAdmin)
-admin.site.register(ProjectCategory)
+

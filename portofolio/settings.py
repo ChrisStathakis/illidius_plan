@@ -30,7 +30,7 @@ CACHES = {
 }
 '''
 
-ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', 'urchin-app-oyzcr.ondigitalocean.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'simply-chris.com', 'www.simply-chris.com', 'plankton-app-32pmz.ondigitalocean.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -115,9 +115,9 @@ if REAL_DB:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': config('NAME'),
             'USER': config('USER'),
-            'PASSWORD':config('PASSWORD'),
-            'HOST':config('HOST'),
-            'PORT':'5432',
+            'PASSWORD': config('PASSWORD'),
+            'HOST': config('HOST'),
+            'PORT': config('DB_PORT'),
         }
     }
 else:
