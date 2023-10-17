@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 from frontend.views import (
     HomepageView, AboutView, ProjectListView, ProductDetailView
@@ -27,4 +30,4 @@ urlpatterns = [
     path("about/", AboutView.as_view(), name="about_view"),
     path("projects/", ProjectListView.as_view(), name="projects_list_view"),
     path("project/<slug:slug>/", ProductDetailView.as_view(), name="product_detail_view"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
